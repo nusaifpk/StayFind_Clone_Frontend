@@ -1,0 +1,98 @@
+.property_list_container {
+    display: flex;
+    /* background-color: #b6b6b6; */
+    height: 100%;
+}
+.property_item:hover {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.5);
+}
+  
+  .property_list_content {
+    flex: 1;
+    padding: 20px;
+  }
+  .property_list_content h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .search_input {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search_input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .property_list {
+    text-align: start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .property_item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .property_images {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .property_details {
+    padding: 20px;
+  }
+  
+  .property_name {
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .property_info {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  
+  .property_price {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .new_price {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .navigate_buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+.span_price{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.614);
+  
+}
+
+.property_location{
+  color: #5d5c5c;
+  font-size: 15px;
+}

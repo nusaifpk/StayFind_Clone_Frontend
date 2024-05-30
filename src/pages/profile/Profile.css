@@ -1,0 +1,134 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #f4f4f9;
+  padding: 20px;
+}
+
+.profile_section {
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.profile_main {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  position: relative; 
+}
+
+.profile_main_left img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.profile_main_right {
+  text-align: start;
+  margin-left: 20px;
+}
+
+.profile_main_right h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.profile_main_right p {
+  margin: 5px 0 0;
+  color: #777;
+}
+
+.edit-icon {
+  display: flex;
+  cursor: pointer;
+  font-size: 15px;
+  color: #434343;
+}
+
+.edit-icon:hover {
+  color: black;
+}
+
+.profile_hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 0 20px;
+}
+
+.profile_details {
+  text-align: start;
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.profile_details form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_details label {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.profile_details input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.profile_details input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .profile_main {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .profile_main_right {
+    text-align: center;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  hr {
+      margin: 20px 0;
+  }
+}
+
+.profile_details p{
+  color: red;
+  font-size: 12px;
+}
+.username-label {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.editbtn{
+  font-size: 10px;
+}

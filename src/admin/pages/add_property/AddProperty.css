@@ -1,0 +1,77 @@
+.property_container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 20px;
+}
+
+.add_property {
+  padding: 20px;
+}
+
+.add_property h2 {
+  font-family: 'Trebuchet MS', sans-serif;
+  margin-top: 30px;
+  color: #333;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.input_style,
+.input_style2,
+.textarea_style,
+.file_input_style {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.input_style:focus,
+.input_style2:focus,
+.textarea_style:focus,
+.file_input_style:focus {
+  outline: none;
+  border: 2px solid #007bff;
+}
+
+.input_style2 {
+  width: calc(50% - 5px); 
+}
+
+.input_property_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.textarea_style {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit_button_style {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.edit_delete_btn{
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+}
+
+.select_placeholder {
+  color: gray;
+}

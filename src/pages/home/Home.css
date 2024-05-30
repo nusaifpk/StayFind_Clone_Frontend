@@ -1,0 +1,166 @@
+.home_section {
+  background-image: url('https://static.ieplads.com/bmsjs/banners/99acres-hp/1366/1366-banner-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 100px;
+  background-size: cover;
+}
+
+.home {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.home h1 {
+  font-size: 2.5rem;
+  color: gold;
+  margin-bottom: 20px;
+}
+
+.home p {
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 40px;
+}
+
+.search_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  flex-wrap: wrap;
+  height: 70px;
+  border-radius: 25px;
+  border: 2px solid rgba(0, 0, 0, 0.167);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+  padding: 10px;
+}
+
+.location_input {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 200px;
+  flex: 1;
+}
+
+.location_input:active {
+  border: none;
+}
+
+.location_input::placeholder {
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search_button {
+  height: 35px;
+  width: 80px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search_button:hover {
+  background-color: #0056b3;
+}
+
+select {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
+}
+
+select option {
+  padding: 10px;
+}
+
+.i_icons {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.i_icons:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+}
+
+.features_section,
+.contact_section {
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .home h1 {
+    font-size: 2rem;
+  }
+
+  .home p {
+    font-size: 1rem;
+  }
+
+  .search_container {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+
+  .location_input {
+    width: 100%;
+  }
+
+  .search_button {
+    width: 100%;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home_section {
+    padding-top: 50px;
+  }
+
+  .home h1 {
+    font-size: 1.5rem;
+  }
+
+  .home p {
+    font-size: 0.9rem;
+  }
+
+  .search_container {
+    padding: 5px;
+  }
+
+  .location_input {
+    font-size: 0.9rem;
+  }
+
+  .search_button {
+    font-size: 0.9rem;
+  }
+
+  select {
+    font-size: 0.9rem;
+  }
+
+  .i_icons {
+    padding: 5px;
+  }
+}

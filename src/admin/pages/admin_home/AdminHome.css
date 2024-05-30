@@ -1,0 +1,28 @@
+.admin_home {
+    display: flex;
+    background-color: #fff;
+    height: 100%;
+}
+.main_card {
+    display: flex;
+    margin-top: 5px;
+}
+.admin_card {
+    display: flex;
+    text-align: start;
+    margin-bottom: 2px;
+    margin: 20px;
+    width: 70rem; 
+}
+.admin_card h5 {
+    color: black;
+    text-decoration: underline;
+}
+.admin_card h2 {
+    color: #e30148;
+}
+.admin_icons {
+    height: 15px;
+    width: 15px;
+}
+

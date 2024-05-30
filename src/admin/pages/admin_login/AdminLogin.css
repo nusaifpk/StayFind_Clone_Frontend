@@ -1,0 +1,62 @@
+.main_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background: url('https://e0.pxfuel.com/wallpapers/592/145/desktop-wallpaper-admin-dark-gears.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.admin_container {
+    max-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+.admin_container img{
+    height: 50px;
+    width: 150px;
+}
+.admin_container h4 {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  
+.admin_input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+  
+.admin_button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.admin_button:hover {
+    background-color: #0056b3;
+}
+.password-input {
+    position: relative;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  

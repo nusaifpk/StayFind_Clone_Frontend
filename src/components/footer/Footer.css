@@ -1,0 +1,12 @@
+.useful_links p{
+    cursor: pointer;
+    
+}
+.useful_links p:hover{
+    color: black;
+}
+
+.footer_description{
+    font-size: 13px;
+    text-align: justify;
+}

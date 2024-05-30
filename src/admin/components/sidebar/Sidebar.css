@@ -1,0 +1,19 @@
+.img_logo{
+    height: 50px;
+    width: 150px;
+}
+.sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px; /* Adjust the width as needed */
+    background-color: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    overflow-y: scroll;
+  }
+  
+  .sidebar-content {
+    padding-top: 20px; /* Adjust the padding as needed */
+  }
+  

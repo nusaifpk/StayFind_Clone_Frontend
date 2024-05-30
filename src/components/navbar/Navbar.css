@@ -1,0 +1,31 @@
+.main_navbar .nav-link {
+    cursor: pointer;
+  }
+  
+  .main_navbar .nav-link:hover {
+    color: black;
+  }
+  
+  .main_navbar .nav-dropdown .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+  
+  .main_navbar .dropdown-toggle::after {
+    display: none;
+  }
+  .main_navbar{
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.wishlist_count{
+    background-color: red;
+    border-radius: 25px;
+    height:16px;
+    width:16px;
+    font-size: 12px;
+    margin-left: -17px;
+}
+

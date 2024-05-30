@@ -1,0 +1,15 @@
+.trip_list_container {
+    display: flex;
+  }
+  
+
+  
+  .main_content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
