@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './PropertyDetails.css';
 import Button from 'react-bootstrap/esm/Button';
-import {differenceInCalendarDays} from "date-fns"
+import { differenceInCalendarDays } from "date-fns"
 import { toast } from 'react-hot-toast';
 import userInstance from '../../aaxios_instance/UserAxios';
 
@@ -18,15 +18,15 @@ const PropertyDetails = () => {
     const [property, setProperty] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [reviewCount, setReviewCount] = useState(0);
-    const [checkIn,setCheckIn] = useState(finalDate)
-    const [checkOut,setCheckOut] = useState('')
-    const [guest,setGuest] = useState(1)
-    const [model,setModel] = useState(false)
+    const [checkIn, setCheckIn] = useState(finalDate)
+    const [checkOut, setCheckOut] = useState('')
+    const [guest, setGuest] = useState(1)
+    const [model, setModel] = useState(false)
     const [favorites, setFavorites] = useState([]);
 
-    
+
     let numOfNights = 0;
-    if(checkIn && checkOut){
+    if (checkIn && checkOut) {
         numOfNights = differenceInCalendarDays(new Date(checkOut), new Date(checkIn))
     }
 
@@ -42,7 +42,7 @@ const PropertyDetails = () => {
                 console.error('Error fetching property details:', error);
             }
         };
-    
+
         const fetchReviews = async () => {
             try {
                 const response = await userInstance.get(`/api/users/properties/${id}/review`);
@@ -52,11 +52,11 @@ const PropertyDetails = () => {
                 console.log("Error fetching reviews:", error);
             }
         };
-    
+
         fetchProperty();
         fetchReviews();
     }, [id]);
-    
+
 
 
 
@@ -66,43 +66,43 @@ const PropertyDetails = () => {
 
     const handleCopyLink = () => {
         const url = window.location.href
-        
+
         navigator.clipboard.writeText(url)
-        .then(() =>  {
-            toast('URL Copied!', {
-                icon: '🔗',
-              });
-        })
-        .catch((error) => {
-            console.log("Error copy url...!",error);
-        })
+            .then(() => {
+                toast('URL Copied!', {
+                    icon: '🔗',
+                });
+            })
+            .catch((error) => {
+                console.log("Error copy url...!", error);
+            })
     }
     const handleShareWhatsApp = () => {
         const txt = "Hey, Check this property : "
-        const url = window.location.href; 
-        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(txt+url)}`;
+        const url = window.location.href;
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(txt + url)}`;
         window.open(whatsappUrl);
         navigator.clipboard.writeText(url)
     };
-        
+
     const handleSave = async (id) => {
         try {
-    
+
             let updatedFavorites = [...favorites];
             if (updatedFavorites.includes(id)) {
                 updatedFavorites = updatedFavorites.filter((favId) => favId !== id);
                 await userInstance.delete(`/api/users/wishlist/${userId}`, { data: { propertyId: id } });
-                localStorage.removeItem('favorites', JSON.stringify(updatedFavorites)); 
+                localStorage.removeItem('favorites', JSON.stringify(updatedFavorites));
                 toast("Item removed...");
 
             } else {
                 updatedFavorites.push(id);
                 await userInstance.post(`/api/users/wishlist/${userId}`, { propertyId: id });
-                localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); 
+                localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
 
                 toast.success("Item added to wishlist...❤︎");
             }
-    
+
             setFavorites(updatedFavorites);
         } catch (error) {
             console.error('Error toggling favorite:', error);
@@ -114,7 +114,7 @@ const PropertyDetails = () => {
         }
     };
 
-const totalAmount = property ? (property.price * numOfNights + numOfNights * 100 + numOfNights * 480 + numOfNights * 413).toLocaleString() : 0;
+    const totalAmount = property ? (property.price * numOfNights + numOfNights * 100 + numOfNights * 480 + numOfNights * 413).toLocaleString() : 0;
 
     const handleReserve = () => {
         if (!checkIn || !checkOut) {
@@ -134,7 +134,7 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                 <div className='property_details'>
                     <div className='test'>
                         <div className='share_fav'>
-                            <p onClick={toggleModel}><i className='fas fa-share'/> Share</p>
+                            <p onClick={toggleModel}><i className='fas fa-share' /> Share</p>
                             {model && (
                                 <div className="model">
                                     <div className="overlay" onClick={toggleModel}>
@@ -146,8 +146,8 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                                                 </div>
                                                 <div className="model_details_right">
                                                     <h1><b>{property.name}</b></h1>
-                                                    <p><i className="fas fa-bed"/> {property.bedroom} Bedrooms</p>
-                                                    <p><i className="fas fa-bath"/> {property.bathroom} Bathrooms</p>
+                                                    <p><i className="fas fa-bed" /> {property.bedroom} Bedrooms</p>
+                                                    <p><i className="fas fa-bath" /> {property.bathroom} Bathrooms</p>
                                                     <p>₹{property.price.toLocaleString()}/- <span>night</span></p>
                                                 </div>
                                             </div>
@@ -162,13 +162,13 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                                 </div>
                             )}
                             <span
-                            style={{cursor:"pointer"}}
-                                    className={favorites.includes(property._id) ? "red" : "black"}
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleSave(property._id);
-                                    }}>
-                                    &#10084;
+                                style={{ cursor: "pointer" }}
+                                className={favorites.includes(property._id) ? "red" : "black"}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleSave(property._id);
+                                }}>
+                                &#10084;
                                 Save</span>
                         </div>
                     </div>
@@ -180,10 +180,10 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                         <img src={property.images[4]} alt="" />
                     </div>
                     <h3>{property.name}</h3>
-                    <p className='property_location'><i className='fas fa-map-marker-alt'/> {property.location}</p>
-                    <p className="description"><i className="fas fa-users"/> {property.guest} Guests 
-                            • <i className="fas fa-bed"/> {property.bedroom} Bedrooms
-                            • <i className="fas fa-bath"/> {property.bathroom} Bathrooms
+                    <p className='property_location'><i className='fas fa-map-marker-alt' /> {property.location}</p>
+                    <p className="description"><i className="fas fa-users" /> {property.guest} Guests
+                        • <i className="fas fa-bed" /> {property.bedroom} Bedrooms
+                        • <i className="fas fa-bath" /> {property.bathroom} Bathrooms
                     </p>
                     <hr className='main_hr' />
                     <div className='hero'>
@@ -195,14 +195,14 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                             <hr />
                             <div className='section_container'>
                                 <h4 className='about_place'>What this place offers</h4>
-                                <p><i className='fas fa-utensils'/>Kitchen </p>
-                                <p><i className='fas fa-wifi'/>Wifi</p>
-                                <p><i className='fas fa-swimming-pool'/>Pool</p>
-                                <p><i className='fas fa-car'/>Free Parking</p>
+                                <p><i className='fas fa-utensils' />Kitchen </p>
+                                <p><i className='fas fa-wifi' />Wifi</p>
+                                <p><i className='fas fa-swimming-pool' />Pool</p>
+                                <p><i className='fas fa-car' />Free Parking</p>
                             </div>
                         </div>
                         <div className="hero_right">
-                            <div className="payment_container">                                                                                                                                                                                   
+                            <div className="payment_container">
                                 <div className='payment_card'>
                                     <h1>₹{property.price.toLocaleString()}/- <span>night</span></h1>
                                     <hr />
@@ -218,12 +218,12 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                                     </div>
                                     <div className='booking_count'>
                                         <label>Number of Guest:&nbsp;</label>
-                                        <input type="number" value={guest} min={1} max={property.guest} onChange={(e) => setGuest(e.target.value)}/>
+                                        <input type="number" value={guest} min={1} max={property.guest} onChange={(e) => setGuest(e.target.value)} />
                                     </div>
                                     <hr />
                                 </div>
                                 <div className='price_details'>
-                                {numOfNights > 0 && (
+                                    {numOfNights > 0 && (
                                         <div className='total_price'>
                                             <p>{property.price.toLocaleString()} x {numOfNights} nights <span>₹{(numOfNights * property.price).toLocaleString()}/-</span></p>
                                             <p>Cleaning fee <span>₹{(numOfNights * 100).toLocaleString()}/-</span></p>
@@ -235,7 +235,7 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                                     )}
                                 </div>
                                 <Button onClick={handleReserve} variant='danger'>
-                                    RESERVE 
+                                    RESERVE
                                 </Button>
                             </div>
 
@@ -256,15 +256,15 @@ const totalAmount = property ? (property.price * numOfNights + numOfNights * 100
                                     <p className='rating_txt'>{review.rating}</p>
                                     <p className='review'>{review.review}</p>
                                 </div>
-                                
+
                             ))
                         ) : (
                             <p>be the first reviewer</p>
                         )}
                     </div>
-                    
+
                     <hr />
-                  
+
                     <div className='remember_section'>
                         <h2>Thinks You should know</h2>
                         <div className='remember_grid'>

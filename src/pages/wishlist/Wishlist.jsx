@@ -54,7 +54,7 @@ const Wishlist = () => {
       });
       setTimeout(() => {
         setWishlist([]);
-      }, 1000); 
+      }, 1000);
     } catch (error) {
       console.log("Error removing all properties from wishlist: ", error);
     }
@@ -65,10 +65,10 @@ const Wishlist = () => {
       <h1>Wishlist</h1>
       <hr />
       <div className='button_div'>
-            {wishlist.length > 0 && 
-                <Button variant='danger' onClick={handleDeleteAll} className='remove_all_button'>Remove All&nbsp;<i className='fas fa-trash' /></Button>
-            }
-        </div>
+        {wishlist.length > 0 &&
+          <Button variant='danger' onClick={handleDeleteAll} className='remove_all_button'>Remove All&nbsp;<i className='fas fa-trash' /></Button>
+        }
+      </div>
       <div className="wishlist">
         {wishlist.length > 0 ? (
           wishlist.map((property) => (

@@ -1,74 +1,73 @@
 .user_list_container {
-    display: flex;
-  }
-  
+  display: flex;
+}
 
-  
-  .main_content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .header {
-    margin-bottom: 20px;
-  }
-  
-  .user_list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
-  }
-  
-  .user_card {
-    text-align: start;
-    border: 1px solid #ddd;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .user_name {
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .user_details {
-    font-size: 15px;
-    color: black;
-  }
-  
-  .user_card:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .user_main{
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-  }
-  
-  .delete_user_btn{
-    border: none;
-  }
 
-  .delete_user_btn:hover{
-    box-shadow:  0 0 30px rgba(0, 0, 0, 0.5);
-  }
 
-  .search_input {
-    width: 100%;
-    padding: 12px 20px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: 1px solid rgb(195, 195, 195);
-    border-radius: 10px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .search_input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
+.main_content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.user_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.user_card {
+  text-align: start;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.user_name {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user_details {
+  font-size: 15px;
+  color: black;
+}
+
+.user_card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.user_main {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.delete_user_btn {
+  border: none;
+}
+
+.delete_user_btn:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.search_input {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.search_input:focus {
+  border-color: #007bff;
+  outline: none;
+}

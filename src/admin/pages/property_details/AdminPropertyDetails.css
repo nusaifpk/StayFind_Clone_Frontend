@@ -1,43 +1,39 @@
-.user_list_container{
+.user_list_container {
   display: flex;
   padding: 20px;
-} 
-.name_section{
+}
+
+.name_section {
   padding-left: 20px;
   text-align: start;
 }
 
-.image_container{
+.image_container {
   display: flex;
   padding: 20px;
   width: auto;
 }
-.property_details_image{
+
+.property_details_image {
   display: flex;
   max-height: 300px;
   width: auto;
 }
-.property_info{
+
+.property_info {
   text-align: start;
   padding-left: 10px;
 }
-.edit_delete_btns{
+
+.edit_delete_btns {
   display: flex;
   gap: 10px;
   justify-content: end;
-  
+
 }
-.edit_btn,.delete_btn{
+
+.edit_btn,
+.delete_btn {
   font-size: 14px;
   max-width: 100px;
 }
-
-
-
-
-
-
-
-
-
-

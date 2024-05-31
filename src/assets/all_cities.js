@@ -1486,6 +1486,8 @@ const cities = [
     { id: 1484, city: 'Idukki', state: 'Kerala' },
     { id: 1485, city: 'Kanjoor', state: 'Kerala' },
     { id: 1486, city: 'Wayanad', state: 'Kerala' },
+    { id: 1487, city: 'Kambilikandam', state: 'Tamil Nadu' },
+    { id: 1488, city: 'Thavinhal', state: 'Kerala' },
 ]
 
 export default cities

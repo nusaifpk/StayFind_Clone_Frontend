@@ -63,10 +63,10 @@ const AddProperty = () => {
             for (let i = 0; i < propertyData.images.length; i++) {
                 formData.append('images', propertyData.images[i])
             }
-            
+
             formData.append('price', propertyData.price);
 
-            await adminInstance.post(`/api/admin/property`,formData, {headers: {"Content-Type": "multipart/form-data"}})
+            await adminInstance.post(`/api/admin/property`, formData, { headers: { "Content-Type": "multipart/form-data" } })
             toast.success("Property added Successfully...");
 
 
@@ -118,8 +118,10 @@ const AddProperty = () => {
                     <select id='category' value={propertyData.category} onChange={handleChange} className='input_style' required>
                         <option value="" disabled hidden className='select_placeholder'>Select</option>
                         <option value="cabin">Cabin</option>
+                        <option value="resort">Resort</option>
                         <option value="farm">Farm</option>
                         <option value="lake">Lake</option>
+                        <option value="villa">Villa</option>
                         <option value="pool">Pool</option>
                         <option value="room">Room</option>
                     </select>

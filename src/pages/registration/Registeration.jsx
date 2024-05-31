@@ -52,7 +52,7 @@ const Registration = () => {
       const otpResponse = await userInstance.post(`/api/users/sentotp`, { phone: values.phone });
 
       if (otpResponse && otpResponse.status === 200) {
-        toast.info("Oops...Redirecting to OTP verification");
+        toast("Oops...Redirecting to OTP verification");
         navigate('/otpverification', { state: { formData: values, phone: values.phone } });
       }
     } catch (error) {
@@ -94,16 +94,16 @@ const Registration = () => {
             </span>
 
             <div className='terms'>
-                <input type='checkbox' id='checkbox' className='terms_input' checked={agree} onChange={handleCheckbox} />
+              <input type='checkbox' id='checkbox' className='terms_input' checked={agree} onChange={handleCheckbox} />
               <label htmlFor='checkbox'>
                 I agree to the <a href='/terms'>terms and conditions</a>
               </label>
             </div>
 
             <Button type='submit' className='btn' variant='danger' disabled={isSubmitting}>
-            {loading ? (
-           <RingLoader color="#fff" loading={loading} size={5} style={{alignItems:"center"}}/>
-        ) :  <div>Sign Up</div> }
+              {loading ? (
+                <RingLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
+              ) : <div>Sign Up</div>}
             </Button>
 
             <div className='member'>

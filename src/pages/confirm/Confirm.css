@@ -1,87 +1,105 @@
-.payment_page_container{
+.payment_page_container {
     padding: 10px;
 }
-.payment_page_container h1{
+
+.payment_page_container h1 {
     text-align: start;
     padding-left: 5%;
     margin-top: 30px;
     margin-bottom: -40px;
     font-size: 2rem;
 }
-.hero_payment{
+
+.hero_payment {
     display: flex;
     gap: 20px;
     flex-direction: row;
     padding: 5%;
 }
-.hero_payment_left{
+
+.hero_payment_left {
     max-width: 50%;
     text-align: start;
 }
-.hero_payment_left h2{
+
+.hero_payment_left h2 {
     padding-top: 20px;
     font-size: 1.5rem;
     padding-bottom: 20px;
 }
-.trip_section{
+
+.trip_section {
     display: flex;
     justify-content: space-between;
     gap: 500px;
 }
-.trip_section p{
+
+.trip_section p {
     font-weight: 600;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.pay_section{
+
+.pay_section {
     display: flex;
     align-items: center;
 }
-.pay_section h2{
+
+.pay_section h2 {
     width: 100%;
 }
-.payment_icons{
+
+.payment_icons {
     display: flex;
     align-items: center;
     justify-content: end;
     width: 100%;
 }
-.payment_option{
+
+.payment_option {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.visa{
+
+.visa {
     height: 40px;
 }
-.rupay{
+
+.rupay {
     height: 50px
 }
-.upi{
+
+.upi {
     height: 30px
 }
-.payment_option input{
+
+.payment_option input {
     height: 40px;
     padding-left: 10px;
     border-radius: 5px;
     border: 1px solid rgb(190, 190, 190);
 }
-.sub_text p{
+
+.sub_text p {
     font-size: 12px;
 }
-.hero_payment_right{
+
+.hero_payment_right {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.payment_card_section{
-    padding:20px;
+
+.payment_card_section {
+    padding: 20px;
     border: 3px solid #828282fc;
     border-radius: 12px;
     height: auto;
     width: auto;
 }
-.payments_card{
+
+.payments_card {
     max-width: 300px;
     display: flex;
     flex-direction: row;
@@ -89,110 +107,128 @@
     align-items: center;
     justify-content: space-between;
 }
-.card_content_left{
+
+.card_content_left {
     max-width: 50%;
 }
-.card_content_right{
+
+.card_content_right {
     max-width: 50%;
     align-items: center;
     justify-content: center;
 }
-.card_content_right h3{
+
+.card_content_right h3 {
     text-align: start;
     font-size: 18px;
 }
-.card_content_right p{
+
+.card_content_right p {
     text-align: start;
     font-size: 12px;
 }
 
-.price_details h2{
+.price_details h2 {
     text-align: start;
     font-size: 1.2rem;
     font-weight: 600;
 }
-.total_price{
+
+.total_price {
     display: flex;
     text-align: start;
     flex-direction: column;
 }
-.total_price p{
+
+.total_price p {
     display: flex;
     color: rgb(61, 61, 61);
     justify-content: space-between;
     text-decoration: underline;
 }
-.total_price span{
+
+.total_price span {
     text-decoration: none;
 }
-.property_image{
+
+.property_image {
     height: 100px;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
-.model_details_functions{
+
+.model_details_functions {
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
 }
-.model_details_functions p{
+
+.model_details_functions p {
     display: flex;
     align-items: center;
     border: 1px solid;
     max-width: 100%;
 }
-.location{
+
+.location {
     font-size: 10px;
 }
 
-/* For small devices (e.g., phones) */
 @media screen and (max-width: 767px) {
     .payment_page_container h1 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
     }
+
     .hero_payment {
-      flex-direction: column;
+        flex-direction: column;
     }
+
     .hero_payment_left {
-      max-width: 100%;
+        max-width: 100%;
     }
+
     .hero_payment_right {
-      max-width: 100%;
-      margin-top: 20px;
+        max-width: 100%;
+        margin-top: 20px;
     }
+
     .payment_card_section {
-      border: none;
+        border: none;
     }
-  }
-  
-  /* For medium devices (e.g., tablets) */
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     .payment_page_container h1 {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
+
     .hero_payment {
-      flex-direction: column;
+        flex-direction: column;
     }
+
     .hero_payment_left {
-      max-width: 100%;
+        max-width: 100%;
     }
+
     .hero_payment_right {
-      max-width: 100%;
-      margin-top: 20px;
+        max-width: 100%;
+        margin-top: 20px;
     }
-  }
-  
-  @media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1024px) {
     .payment_page_container {
-      padding: 20px;
+        padding: 20px;
     }
+
     .payment_page_container h1 {
-      font-size: 2rem;
-      margin-top: 30px;
+        font-size: 2rem;
+        margin-top: 30px;
     }
+
     .hero_payment {
-      gap: 40px;
+        gap: 40px;
     }
-  }
-  
+}

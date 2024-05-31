@@ -10,36 +10,47 @@ const AdminHome = () => {
     const navigate = useNavigate();
     const [userCount, setUserCount] = useState(0);
     const [propertyCount, setPropertyCount] = useState(0);
+    const [bookingCount, setBookingCount] = useState(0);
 
     useEffect(() => {
-        if(!localStorage.getItem('adminToken')){
+        if (!localStorage.getItem('adminToken')) {
             navigate('/admin_login')
         }
-    },[])
+    }, [])
 
     useEffect(() => {
         const fetchUserCount = async () => {
             try {
                 const response = await adminInstance.get(`/api/admin/user`);
                 setUserCount(response.data.dataCount);
-            } 
+            }
             catch (error) {
                 console.error("Error fetching user count: ", error);
             }
         }
-        
+
         const fetchPropertyCount = async () => {
-            try{
+            try {
                 const response = await adminInstance.get(`/api/admin/properties`)
                 setPropertyCount(response.data.dataCount);
             }
-            catch(error){
+            catch (error) {
                 console.error("Error fetching property count: ", error);
             }
         }
-        
+        const fetchBookingCount = async () => {
+            try {
+                const response = await adminInstance.get(`/api/admin/bookings`)
+                setBookingCount(response.data.dataCount);
+            }
+            catch (error) {
+                console.error("Error fetching property count: ", error);
+            }
+        }
+
         fetchUserCount();
         fetchPropertyCount();
+        fetchBookingCount()
     }, []);
 
     return (
@@ -47,15 +58,15 @@ const AdminHome = () => {
             <div><Sidebar /></div>
             <div className="main_card">
                 <div>
-                    <Card 
+                    <Card
                         className='admin_card'
-                         >
-                        <Card.Header>Hi Admin,<br/>
-                          <h5>Welcome to StayFind...</h5>
+                    >
+                        <Card.Header>Hi Admin,<br />
+                            <h5>Welcome to StayFind...</h5>
                         </Card.Header>
-                          
+
                     </Card>
-                    <Card 
+                    <Card
                         className='admin_card'
                         title='Go to users page'
                         onClick={() => navigate('/user')} >
@@ -65,7 +76,7 @@ const AdminHome = () => {
                             <Card.Text><h2>{userCount}</h2></Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card 
+                    <Card
                         className='admin_card'
                         title='Go to properties page'
                         onClick={() => navigate('/properties_list')} >
@@ -75,14 +86,14 @@ const AdminHome = () => {
                             <Card.Text><h2>{propertyCount}</h2></Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card 
+                    <Card
                         className='admin_card'
                         title='Go to booking page'
-                        onClick={() => navigate('/trips')} >
+                        onClick={() => navigate('/booking_list')} >
                         <Card.Header><i className="fas fa-calendar-check" />  BOOKING</Card.Header>
                         <Card.Body>
                             <Card.Title>TOTAL BOOKING</Card.Title>
-                            <Card.Text><h2>Total</h2></Card.Text>
+                            <Card.Text><h2>{bookingCount}</h2></Card.Text>
                         </Card.Body>
                     </Card>
                 </div>

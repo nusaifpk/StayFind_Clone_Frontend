@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 const Home = () => {
-  
+
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
   const [category, setCategory] = useState('all');
@@ -22,7 +22,7 @@ const Home = () => {
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
-  
+
   const locationUrl = process.env.REACT_APP_LOCATION_FETCH_URL;
 
   //Get Location
@@ -35,7 +35,7 @@ const Home = () => {
             .then(response => response.json())
             .then(data => {
               const placeName = data.address.county;
-              setInputValue(placeName); 
+              setInputValue(placeName);
             })
             .catch(error => console.error("Error fetching location: ", error));
         },
@@ -47,13 +47,13 @@ const Home = () => {
       console.log("Geolocation is not supported by this browser");
     }
   };
-  
+
   //Get Location By Mic
   const handleGLocByMic = () => {
-    toast("Mic is now on...",{
-      autoClose:5000
+    toast("Mic is now on...", {
+      autoClose: 5000
     });
-    
+
     const recognition = new window.webkitSpeechRecognition();
 
     recognition.onresult = (e) => {
@@ -63,12 +63,12 @@ const Home = () => {
     recognition.start();
     setTimeout(() => {
       recognition.stop();
-      toast.dismiss(); 
+      toast.dismiss();
     }, 5000);
   };
 
   const handleSearch = () => {
-    if(inputValue.trim() !== ''){ 
+    if (inputValue.trim() !== '') {
       let searchUrl = `/properties?location=${inputValue}`;
       if (category !== 'all') {
         searchUrl += `&category=${category}`;
@@ -80,7 +80,7 @@ const Home = () => {
   };
 
   const handleEnter = (e) => {
-    if(e.key === 'Enter'){
+    if (e.key === 'Enter') {
       handleSearch();
     }
   };
@@ -113,9 +113,12 @@ const Home = () => {
           <div className="search_container">
             <select name="Property" onChange={handleCategoryChange}>
               <option value="all">Category All</option>
-              <option value="pool">Pool</option>
-              <option value="lake">Lake</option>
+              <option value="cabin">Cabin</option>
+              <option value="resort">Resort</option>
               <option value="farm">Farm</option>
+              <option value="lake">Lake</option>
+              <option value="villa">Villa</option>
+              <option value="pool">Pool</option>
               <option value="room">Room</option>
             </select>
             <i className="fas fa-search" style={{ paddingLeft: '20px', paddingRight: '0px' }} />

@@ -59,7 +59,7 @@ const EditProperty = () => {
       for (let i = 0; i < property.images.length; i++) {
         formData.append('images', property.images[i]);
       }
-      
+
       formData.append('price', property.price);
 
       const response = await adminInstance.put(`/api/admin/property/${id}`, formData);

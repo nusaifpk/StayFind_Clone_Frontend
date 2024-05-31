@@ -14,6 +14,8 @@ const Property = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 16;
 
     const userId = localStorage.getItem('userId');
     const userToken = localStorage.getItem('userToken');
@@ -27,13 +29,13 @@ const Property = () => {
             try {
                 const response = await userInstance.get(`/api/users/properties/`);
                 setProperties(response.data.data);
-    
+
                 const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
                 setFavorites(storedFavorites);
-    
+
                 setTimeout(() => {
                     setLoading(false);
-                }, 1000); 
+                }, 1000);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setLoading(false);
@@ -41,7 +43,7 @@ const Property = () => {
         };
         fetchData();
     }, [userId]);
-    
+
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
@@ -60,7 +62,7 @@ const Property = () => {
             setSuggestions([]);
             return;
         }
-    
+
         const filteredCities = cities.filter((city) =>
             city.city.toLowerCase().includes(search.toLowerCase())
         );
@@ -74,22 +76,22 @@ const Property = () => {
                 navigate('/login');
                 return;
             }
-    
+
             let updatedFavorites = [...favorites];
             if (updatedFavorites.includes(id)) {
                 updatedFavorites = updatedFavorites.filter((favId) => favId !== id);
                 await userInstance.delete(`/api/users/wishlist/${userId}`, { data: { propertyId: id } });
                 toast("Item removed ...");
-    
-                localStorage.removeItem('favorites', JSON.stringify(updatedFavorites)); 
+
+                localStorage.removeItem('favorites', JSON.stringify(updatedFavorites));
             } else {
                 updatedFavorites.push(id);
                 await userInstance.post(`/api/users/wishlist/${userId}`, { propertyId: id });
                 toast.success("Item added to wishlist...❤︎");
-    
-                localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); 
+
+                localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
             }
-    
+
             setFavorites(updatedFavorites);
         } catch (error) {
             console.error('Error toggling favorite:', error);
@@ -100,18 +102,27 @@ const Property = () => {
             }
         }
     };
-    
-    
+
+
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
     };
 
+    // Filter properties based on search and category
     const filteredProperties = properties.filter(property => {
         const matchesLocation = property.location.toLowerCase().includes(search.toLowerCase());
         const matchesCategory = category === 'all' || property.category === category;
         return matchesLocation && matchesCategory;
     });
+
+    // Paginate properties
+    const indexOfLastProperty = currentPage * itemsPerPage;
+    const indexOfFirstProperty = indexOfLastProperty - itemsPerPage;
+    const currentProperties = filteredProperties.slice(indexOfFirstProperty, indexOfLastProperty);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className='main_property_container'>
@@ -134,8 +145,8 @@ const Property = () => {
                             </div>
                         </div>
                     ))
-                ) : filteredProperties.length > 0 ? (
-                    filteredProperties.map((property) => (
+                ) : currentProperties.length > 0 ? (
+                    currentProperties.map((property) => (
                         <div key={property._id} className="card" onClick={() => navigate(`/properties/${property._id}?name=${property.name}&location=${property.location}`)}>
                             <div className="card_img_container">
                                 <img src={property.images[0]} alt={property.name} className='image' />
@@ -168,6 +179,11 @@ const Property = () => {
                         <button className='explore_btn' onClick={handleExploreButton}>EXPLORE OTHER</button>
                     </div>
                 )}
+            </div>
+            <div className="pagination">
+                {Array.from({ length: Math.ceil(filteredProperties.length / itemsPerPage) }).map((_, index) => (
+                    <button key={index} onClick={() => paginate(index + 1)} className="page-link">{index + 1}</button>
+                ))}
             </div>
         </div>
     );

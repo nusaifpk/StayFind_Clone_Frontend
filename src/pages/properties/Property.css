@@ -1,5 +1,4 @@
-
-.main_text{
+.main_text {
     font-size: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -7,7 +6,8 @@
     align-items: center;
     justify-content: center;
 }
-.main_text span{
+
+.main_text span {
     font-weight: 600;
     /* text-decoration: underline; */
 }
@@ -23,20 +23,21 @@
     border-radius: 4px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
-  }
-  
-  .search_property:focus {
+}
+
+.search_property:focus {
     border-color: #007bff;
     outline: none;
-  }
+}
 
-.property{
+.property {
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.card{
+
+.card {
     width: 280px;
     margin: 30px 10px;
     border: 1px solid #ccc;
@@ -44,47 +45,54 @@
     overflow: hidden;
     cursor: pointer;
 }
-.card:hover{
+
+.card:hover {
     /* transform: scale(1.005); */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.image{
+
+.image {
     width: 100%;
     height: 250px;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.details{
+.details {
     padding: 10px;
     text-align: start;
 }
-.name{
+
+.name {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
 }
-.description{
+
+.description {
     font-size: 14px;
     margin: 5px 0;
 }
-.rating{
+
+.rating {
     text-align: start;
     font-size: 13px;
     text-decoration: underline;
 }
-.price{
+
+.price {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
 
-.new-price{
+.new-price {
     color: black;
     font-weight: bold;
 }
-.old-price{
+
+.old-price {
     color: rgba(0, 0, 0, 0.776);
     text-decoration: line-through grey;
 }
@@ -96,6 +104,7 @@
 .black {
     color: black;
 }
+
 .card_img_container {
     position: relative;
 }
@@ -113,6 +122,35 @@
     font-size: 28px;
 }
 
+/* Paging */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.page-link {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.page-link:focus {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
 
 
 
@@ -144,9 +182,11 @@
     0% {
         left: -150px;
     }
+
     50% {
         left: 100%;
     }
+
     100% {
         left: 100%;
     }

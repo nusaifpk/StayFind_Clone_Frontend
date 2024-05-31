@@ -27,6 +27,14 @@ const Confirm = () => {
   const numOfNights = searchParams.get('numOfNights')
   const checkIn = searchParams.get('checkIn')
   const checkOut = searchParams.get('checkOut')
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
   //why total_amount not called
   const total_amount = searchParams.get('totalAmount')
 
@@ -143,7 +151,7 @@ const Confirm = () => {
                       clearInterval(timerInterval);
                       Swal.close();
                     }
-                  }, 1000); 
+                  }, 1000);
                 },
                 willClose: () => {
                   clearInterval(timerInterval);
@@ -199,7 +207,7 @@ const Confirm = () => {
                 <p>Dates</p>
                 <p><u>Edit</u></p>
               </div>
-              <p>{checkIn} - {checkOut}</p>
+              <p>{formatDate(checkIn)} - {formatDate(checkOut)}</p>
               <div className='trip_section'>
                 <p>Guest</p>
                 <p><u>Edit</u></p>

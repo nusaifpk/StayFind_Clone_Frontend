@@ -1,0 +1,32 @@
+.booking_list_container {
+  display: flex;
+}
+
+.main_content {
+  flex: 1;
+}
+
+.booking_header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.booking_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.booking_table th,
+.booking_table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.booking_table th {
+  background-color: #f2f2f2;
+}
+
+.booking_row:hover {
+  background-color: #f2f2f2;
+}

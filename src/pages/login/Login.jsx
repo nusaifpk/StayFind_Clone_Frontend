@@ -3,19 +3,19 @@ import "../../styles/RegLog.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import Button from 'react-bootstrap/esm/Button'
-import {SyncLoader} from "react-spinners"
+import { SyncLoader } from "react-spinners"
 import userInstance from '../../aaxios_instance/UserAxios'
 
 const Login = () => {
   const navigate = useNavigate()
 
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   })
 
-  
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -41,7 +41,7 @@ const Login = () => {
       localStorage.removeItem('name');
       localStorage.removeItem('phone');
       toast.warning("Session expired. Please log in again.");
-    }, 86400000); 
+    }, 86400000);
   };
 
 
@@ -49,23 +49,23 @@ const Login = () => {
     e.preventDefault()
     setLoading(true)
 
-    setTimeout(async() => {
+    setTimeout(async () => {
       try {
         const response = await userInstance.post(`/api/users/login`, formData);
-        const {token, user} = response.data
+        const { token, user } = response.data
         handleToken(token, user)
         toast.success("login success..")
-        navigate('/')  
-      } 
+        navigate('/')
+      }
       catch (error) {
         if (error.response && error.response.data && error.response.data.message) {
           toast.error(error.response.data.message);
-        } 
+        }
         else {
           toast.error(error.message);
         }
       }
-      finally{
+      finally {
         setLoading(false)
       }
     }, 2000);
@@ -83,8 +83,8 @@ const Login = () => {
           <a>Forgot password?</a>
         </div>
         <Button type='submit' variant='danger' className='btn'>{loading ? (
-           <SyncLoader color="#fff" loading={loading} size={5} style={{alignItems:"center"}}/>
-        ) :  <div>Login</div> }</Button>
+          <SyncLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
+        ) : <div>Login</div>}</Button>
       </form>
       <div className='member'>
         Not a member? <Link to='/register'><p className='reg-text'><u>Register now</u></p></Link>

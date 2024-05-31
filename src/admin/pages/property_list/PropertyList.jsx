@@ -12,10 +12,10 @@ const PropertyList = () => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    if(!localStorage.getItem('adminToken')){
-        navigate('/admin_login')
+    if (!localStorage.getItem('adminToken')) {
+      navigate('/admin_login')
     }
-  },[])
+  }, [])
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -42,27 +42,27 @@ const PropertyList = () => {
         <h2>View Properties</h2>
         <input type="search" placeholder='Search here...' value={search} onChange={handleSearch} className='search_input' />
         <div className="property_list">
-          {searchedProperties.length > 0? (
-          searchedProperties.map((property) => (
-            <div key={property._id} className="property_item">
-              <div className="property_images" style={{ backgroundImage: `url(${property.images[0]})` }}></div>
-              <div className="property_details">
-                <h3 className="property_name">{property.name}</h3>
-                <p className='property_location'><i className='fas fa-marked'/>{property.location}</p>
-                <p className="property_info"><i className="fas fa-users"/> {property.guest} Guests 
-                • <i className="fas fa-bed"/> {property.bedroom} Bedrooms
-                • <i className="fas fa-bath"/> {property.bathroom} Bathrooms
-                </p>
-                <div className="property_price">
-                  <p className="new_price">₹{property.price.toLocaleString()}/- <span className='span_price'>night</span></p>
-                </div>
-                <div className="navigate_buttons">
-                  <Button variant='success' className='navigate_button' onClick={()=> navigate(`/properties_list/${property._id}?name=${property.name}`)}>View Product</Button>
+          {searchedProperties.length > 0 ? (
+            searchedProperties.map((property) => (
+              <div key={property._id} className="property_item">
+                <div className="property_images" style={{ backgroundImage: `url(${property.images[0]})` }}></div>
+                <div className="property_details">
+                  <h3 className="property_name">{property.name}</h3>
+                  <p className='property_location'><i className='fas fa-marked' />{property.location}</p>
+                  <p className="property_info"><i className="fas fa-users" /> {property.guest} Guests
+                    • <i className="fas fa-bed" /> {property.bedroom} Bedrooms
+                    • <i className="fas fa-bath" /> {property.bathroom} Bathrooms
+                  </p>
+                  <div className="property_price">
+                    <p className="new_price">₹{property.price.toLocaleString()}/- <span className='span_price'>night</span></p>
+                  </div>
+                  <div className="navigate_buttons">
+                    <Button variant='success' className='navigate_button' onClick={() => navigate(`/properties_list/${property._id}?name=${property.name}`)}>View Product</Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )) ):( <p><center>No properties found...</center></p>)
-        }
+            ))) : (<p><center>No properties found...</center></p>)
+          }
         </div>
       </div>
     </div>

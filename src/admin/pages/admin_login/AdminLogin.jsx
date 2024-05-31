@@ -8,7 +8,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import adminInstance from '../../../aaxios_instance/AdminAxios';
 
 const AdminLogin = () => {
-  
+
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -33,18 +33,23 @@ const AdminLogin = () => {
       localStorage.setItem('adminToken', token);
       toast.success("Admin login success...");
       navigate('/admin');
-      
+
       setTimeout(() => {
         localStorage.removeItem('adminToken');
         toast.warning("Session expired. Please log in again.");
       }, 3600000);
-    
+
     }
     catch (error) {
       console.error('Login error:', error);
-      toast.error("Invalid admin credentials");
+      if (error.response && error.response.status === 401) {
+        toast.error("Invalid admin credentials");
+      } else {
+        toast.error("An error occurred during login. Please try again later.");
+      }
     }
   };
+
 
   return (
     <div className='main_div'>
@@ -54,12 +59,12 @@ const AdminLogin = () => {
         <form onSubmit={handleSubmit}>
           <div className='field'>
             <label>Username</label>
-            <input className='admin_input' type="text" name="username" placeholder='username' value={formData.username} onChange={handleChange} required/>
+            <input className='admin_input' type="text" name="username" placeholder='username' value={formData.username} onChange={handleChange} required />
           </div>
           <div>
             <label>Password</label>
             <div className="password-input">
-              <input className='admin_input' type={showPassword ? "text" : "password"}  name="password" placeholder='password'  value={formData.password} onChange={handleChange} required />
+              <input className='admin_input' type={showPassword ? "text" : "password"} name="password" placeholder='password' value={formData.password} onChange={handleChange} required />
               <span className="password-toggle" onClick={togglePasswordVisibility}>
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>

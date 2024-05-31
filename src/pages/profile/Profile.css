@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  position: relative; 
+  position: relative;
 }
 
 .profile_main_left img {
@@ -104,9 +104,9 @@
 
 @media (max-width: 768px) {
   .profile_main {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .profile_main_right {
@@ -116,19 +116,21 @@
   }
 
   hr {
-      margin: 20px 0;
+    margin: 20px 0;
   }
 }
 
-.profile_details p{
+.profile_details p {
   color: red;
   font-size: 12px;
 }
+
 .username-label {
   display: flex;
   align-items: center;
   position: relative;
 }
-.editbtn{
+
+.editbtn {
   font-size: 10px;
 }

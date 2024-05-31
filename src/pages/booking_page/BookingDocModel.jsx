@@ -1,8 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
-import stayfindLogo from '../../../../assets/stayfind.png'; // Import your image
+import stayfindLogo from '../../assets/stayfind.png'; 
 
-// Create styles
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',

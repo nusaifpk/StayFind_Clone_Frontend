@@ -9,8 +9,8 @@ const Profile = () => {
 
     const [profile, setProfile] = useState({});
     const [editProfile, setEditProfile] = useState('');
-    const [isEditing, setIsEditing] = useState(false); 
-    const [error,setError] = useState('')
+    const [isEditing, setIsEditing] = useState(false);
+    const [error, setError] = useState('')
 
     useEffect(() => {
         if (!localStorage.getItem('userToken')) {
@@ -22,7 +22,7 @@ const Profile = () => {
         const fetchUserProfile = async () => {
             const response = await userInstance.get(`http://localhost:5000/api/users/profile/${userId}`);
             setProfile(response.data.data);
-            setEditProfile(response.data.data.username); 
+            setEditProfile(response.data.data.username);
         };
         fetchUserProfile();
     }, []);
@@ -33,17 +33,17 @@ const Profile = () => {
                 setError("Username must be at least 4 letters long.");
                 return;
             }
-            
+
             await userInstance.put(`http://localhost:5000/api/users/profile/${userId}`, { username: editProfile });
             setProfile({ ...profile, username: editProfile });
             localStorage.setItem('username', editProfile);
-            setIsEditing(false); 
+            setIsEditing(false);
         } catch (error) {
             console.log(error);
             setError(error.response.data.message)
         }
     };
-    
+
 
     return (
         <div style={{ minHeight: '90vh' }}>
@@ -58,7 +58,7 @@ const Profile = () => {
                                 <h1>{profile.username}</h1>
                                 <p>{profile.email}</p>
                             </div>
-                            
+
                             <hr className='profile_hr' />
                         </div>
                     </div>
@@ -76,12 +76,12 @@ const Profile = () => {
                                     type='text'
                                     value={editProfile}
                                     onChange={(e) => setEditProfile(e.target.value)}
-                                    onFocus={() => setIsEditing(true)} 
-                                    />
-                                
-                            {error && ( <p>{error}</p>)}   
+                                    onFocus={() => setIsEditing(true)}
+                                />
+
+                                {error && (<p>{error}</p>)}
                             </label>
-                            
+
                             <label>
                                 Email: <input type='text' value={profile.email} readOnly />
                             </label>
@@ -89,11 +89,11 @@ const Profile = () => {
                                 Phone: <input type='text' value={profile.phone} readOnly />
                             </label>
                         </form>
-                            {isEditing && (
-                                <span className='save-icon'onClick={handleEditProfile} >
-                                    <button >Save</button>
-                                </span>
-                            )}
+                        {isEditing && (
+                            <span className='save-icon' onClick={handleEditProfile} >
+                                <button >Save</button>
+                            </span>
+                        )}
                     </div>
                 </div>
             )}

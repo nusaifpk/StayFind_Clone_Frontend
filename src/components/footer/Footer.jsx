@@ -6,8 +6,8 @@ import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-k
 
 const Footer = () => {
 
-    const navigate = useNavigate()
-    const year = new Date().getFullYear()
+  const navigate = useNavigate()
+  const year = new Date().getFullYear()
 
   return (
     <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
@@ -32,7 +32,7 @@ const Footer = () => {
           <a className='me-4 text-reset'>
             <MDBIcon color='secondary' fab icon='instagram' />
           </a>
-          
+
         </div>
       </section>
 
@@ -42,27 +42,27 @@ const Footer = () => {
             <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4 '>
               <h6 className='text-uppercase fw-bold mb-4'>
                 <MDBIcon color='secondary' className='me-3' />
-                <img style={{maxHeight:"40px",cursor:"pointer"}} src={logo} alt="" />
+                <img style={{ maxHeight: "40px", cursor: "pointer" }} src={logo} alt="" />
               </h6>
               <p className='footer_description'>
-              Traveling should be about experiencing new places, not stressing over accommodations. That's where StayFind comes in. We're here to revolutionize the way you book stays by offering a seamless, stress-free experience from start to finish. Say goodbye to endless searching and hello to finding your perfect stay with ease.
+                Traveling should be about experiencing new places, not stressing over accommodations. That's where StayFind comes in. We're here to revolutionize the way you book stays by offering a seamless, stress-free experience from start to finish. Say goodbye to endless searching and hello to finding your perfect stay with ease.
               </p>
             </MDBCol>
 
             <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4 useful_links'>
-                <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
-                <p onClick={() => navigate('/')}>Home</p>
-                <p onClick={() => navigate('/properties')}>Properties</p>
-                <p onClick={() => navigate('/about')}>About</p>
-                <p onClick={() => navigate('/contact')}>Contact</p>
+              <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
+              <p onClick={() => navigate('/')}>Home</p>
+              <p onClick={() => navigate('/properties')}>Properties</p>
+              <p onClick={() => navigate('/about')}>About</p>
+              <p onClick={() => navigate('/contact')}>Contact</p>
             </MDBCol>
 
             <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4 useful_links'>
-                <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
-                <p>Pricing</p>
-                <p>Setting</p>
-                <p>Booking</p>
-                <p>Help</p>
+              <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
+              <p>Pricing</p>
+              <p>Setting</p>
+              <p>Booking</p>
+              <p>Help</p>
             </MDBCol>
 
             <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>

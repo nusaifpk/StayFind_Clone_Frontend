@@ -1,29 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
 }
-body{
+
+body {
     background: #ffffff;
 }
 
-.wrapper{
+.wrapper {
     width: 330px;
     padding: 2rem 1rem;
     margin: 50px auto;
     background-color: #fff;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
 }
-h1{
+
+h1 {
     font-size: 2rem;
     color: #07001f;
     margin-bottom: 1.2rem;
 }
 
-.reg_input{
+.reg_input {
     width: 92%;
     outline: none;
     border: 1px solid #fff;
@@ -31,24 +33,27 @@ h1{
     margin-bottom: 10px;
     border-radius: 20px;
     background: #e4e4e4;
-}
-.reg_input:focus{
-    border: 1px solid rgb(192,192,192);
-}
-form textarea{
-    width: 92%;
-    outline: none;
-    border: 1px solid #fff;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    background: #e4e4e4;
-}
-textarea:focus{
-    border: 1px solid rgb(192,192,192);
 }
 
-.btn{
+.reg_input:focus {
+    border: 1px solid rgb(192, 192, 192);
+}
+
+form textarea {
+    width: 92%;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+}
+
+textarea:focus {
+    border: 1px solid rgb(192, 192, 192);
+}
+
+.btn {
     font-size: 1rem;
     margin-top: 1.8rem;
     padding: 10px 0;
@@ -60,68 +65,74 @@ textarea:focus{
     color: #ffffff;
     cursor: pointer;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: #e30148;
     transition: background-color 0.5s ease;
 }
 
-.terms{
+.terms {
     margin-top: 0.2rem;
 }
-.terms_input{
+
+.terms_input {
     height: 1em;
     width: 1em;
     vertical-align: middle;
     cursor: pointer;
 }
-    #checkbox{
+
+#checkbox {
     margin-bottom: 2px;
-    margin-right:2px;
+    margin-right: 2px;
 }
-.terms label{
+
+.terms label {
     font-size: 0.8rem;
 }
-.terms a{
+
+.terms a {
     color: rgb(0, 140, 255);
     text-decoration: none;
 }
 
-.member{
+.member {
     font-size: 0.8rem;
     margin-top: 1.4rem;
     color: #636364;
 }
-.member a{
-    color: rgba(17,107,143);
+
+.member a {
+    color: rgba(17, 107, 143);
     text-decoration: none;
 }
 
-.forgot-text{
+.forgot-text {
     text-align: center;
     font-size: 0.7rem;
     margin: 0.3rem 1.4rem 0 0;
 }
-.forgot-text a{
+
+.forgot-text a {
     text-decoration: none;
     color: #464646;
 }
 
 .wrapper span {
-  /* position: absolute; */
-  /* top: 50%; */
-  /* right: 10px; */
-  transform: translateY(-50%);
-  cursor: pointer;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* right: 10px; */
+    transform: translateY(-50%);
+    cursor: pointer;
 }
-.spinner-overlay{
+
+.spinner-overlay {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.scale_spinner{
+.scale_spinner {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-

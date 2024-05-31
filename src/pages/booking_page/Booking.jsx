@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import './Booking.css';
 import { useNavigate } from 'react-router-dom';
-import userInstance from '../../../../aaxios_instance/UserAxios';
+import userInstance from '../../aaxios_instance/UserAxios';
 import BookingDocument from './BookingDocModel';
-import stayfind from '../../../../assets/stayfind.png';
+import stayfind from '../../assets/stayfind.png';
 import Swal from 'sweetalert2';
 
 const Booking = () => {

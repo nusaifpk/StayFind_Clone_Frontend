@@ -1,7 +1,7 @@
 import './App.css';
 import 'react-loading-skeleton/dist/skeleton.css'
 import '@fortawesome/fontawesome-free/css/all.css';
-import {Routes , Route} from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Home from './pages/home/Home';
 import Registration from './pages/registration/Registeration';
 import OtpVerification from './pages/otp_verification/OtpVerification';
@@ -21,13 +21,11 @@ import AdminPropertyDetails from './admin/pages/property_details/AdminPropertyDe
 import Confirm from './pages/confirm/Confirm';
 import About from './components/about-us/About';
 import NavBar from './components/navbar/Navbar';
-import Test from './Test';
 import Trip from './pages/trips/Trip';
-import AdminTrips from './admin/pages/trip_list/AdminTrips';
 import ProfilePage from './pages/profile/Profile';
 import Contact from './components/contact_us/Contact';
-import Booking from './admin/pages/add_property/booking_page/Booking';
-
+import Booking from './pages/booking_page/Booking';
+import AdminBooking from './admin/pages/booking_list/AdminBooking';
 
 
 
@@ -41,49 +39,50 @@ function App() {
     '/user',
     '/properties_list',
     '/properties_details',
-];
+    '/booking_list',
+  ];
 
-const currentPath = window.location.pathname;
-const isAdminPath = removeNavbar.some((path) => currentPath.startsWith(path));
+  const currentPath = window.location.pathname;
+  const isAdminPath = removeNavbar.some((path) => currentPath.startsWith(path));
 
 
   return (
     <div className="App">
       <Toaster position='top-center' autoClose={2000} />
 
-      {!isAdminPath && <NavBar/>}
+      {!isAdminPath && <NavBar />}
 
-    <Routes>
+      <Routes>
 
-      <Route path='/' element={<Home />} />
-      <Route path='/register' element={<Registration />} />
-      <Route path='/otpverification' element={<OtpVerification />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/properties' element={<Property />} />
-      <Route path='/properties/:id' element={<PropertyDetails />} />
-      <Route path='/about' element={<About/>} />
-      <Route path='/contact' element={<Contact/>} />
-      <Route path='/confirm/:propertyId' element={<Confirm/>} />
-      <Route path='/booking' element={<Booking/>} />
-      <Route path='/wishlist' element={<Wishlist/>} />
-      <Route path='/trip' element={<Trip/>} />
-      <Route path='/test' element={<Test/>} />
-      
-      <Route path='/profile' element={<ProfilePage/>} />
-      
-      <Route path='/admin_login' element= {<AdminLogin/>} />
-      <Route path='/admin' element= {<AdminHome/>} />
-      <Route path='/add_property' element= {<AddProperty/>} />
-      <Route path='/edit_property/:id' element={<EditProperty/>} /> 
-      <Route path='/user' element= {<UserList/>} />
-      <Route path='/properties_list' element= {<PropertyList/>} />
-      <Route path='/properties_list/:id' element= {<AdminPropertyDetails/>} />
-      <Route path='/trips' element= {<AdminTrips/>} />
-      
-      
-    </Routes>
+        {/* USER */}
+        <Route path='/' element={<Home />} />
+        <Route path='/register' element={<Registration />} />
+        <Route path='/otpverification' element={<OtpVerification />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/properties' element={<Property />} />
+        <Route path='/properties/:id' element={<PropertyDetails />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/confirm/:propertyId' element={<Confirm />} />
+        <Route path='/booking' element={<Booking />} />
+        <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/trip' element={<Trip />} />
+        <Route path='/profile' element={<ProfilePage />} />
 
-    {!isAdminPath && <Footer/>}
+        {/* ADMIN */}
+        <Route path='/admin_login' element={<AdminLogin />} />
+        <Route path='/admin' element={<AdminHome />} />
+        <Route path='/add_property' element={<AddProperty />} />
+        <Route path='/edit_property/:id' element={<EditProperty />} />
+        <Route path='/user' element={<UserList />} />
+        <Route path='/properties_list' element={<PropertyList />} />
+        <Route path='/properties_list/:id' element={<AdminPropertyDetails />} />
+        <Route path='/booking_list' element={<AdminBooking />} />
+
+
+      </Routes>
+
+      {!isAdminPath && <Footer />}
 
     </div>
   );

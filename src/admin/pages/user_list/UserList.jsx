@@ -17,10 +17,10 @@ const UserList = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(!localStorage.getItem('adminToken')){
-        navigate('/admin_login')
+    if (!localStorage.getItem('adminToken')) {
+      navigate('/admin_login')
     }
-  },[])
+  }, [])
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -42,7 +42,7 @@ const UserList = () => {
 
       setUsers((prevUser) => prevUser.map((user) => user._id === userId ? { ...user, isBlocked: !user.isBlocked } : user))
       console.log(response.data.message);
-      toast(response.data.message,"", {icon: ''});
+      toast(response.data.message, "", { icon: '' });
     }
     catch (error) {
       console.log(error);
@@ -52,7 +52,7 @@ const UserList = () => {
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
-  } 
+  }
 
   const searchedUser = users.filter(user => user.name.toLowerCase().includes(search.toLowerCase()))
 
@@ -66,8 +66,7 @@ const UserList = () => {
           <MDBTable responsive='sm' striped bordered>
             <MDBTableHead>
               <tr>
-                <th scope='col'></th>
-                {/* <th scope='col'>Name</th> */}
+                <th scope='col'>Sl No</th>
                 <th scope='col'>Username</th>
                 <th scope='col'>Email</th>
                 <th scope='col'>Phone</th>
@@ -78,10 +77,9 @@ const UserList = () => {
             </MDBTableHead>
             <MDBTableBody>
               {searchedUser.length > 0 ? (
-                searchedUser.map((user) => (
+                searchedUser.map((user, index) => (
                   <tr key={user._id}>
-                    <td><i className='fas fa-user' /></td>
-                    {/* <td>{user.name}</td> */}
+                    <td>{index + 1}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.phone}</td>

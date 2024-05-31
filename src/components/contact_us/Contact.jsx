@@ -36,7 +36,7 @@ const Contact = () => {
   const handleInputClick = () => {
     const userName = localStorage.getItem('name');
     const userEmail = localStorage.getItem('email');
-    
+
     if (userName) setName(userName);
     if (userEmail) setEmail(userEmail);
   };
