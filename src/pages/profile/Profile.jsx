@@ -6,17 +6,17 @@ import userInstance from '../../aaxios_instance/UserAxios';
 const Profile = () => {
     const navigate = useNavigate();
     const userId = localStorage.getItem('userId');
-
-    const [profile, setProfile] = useState({});
-    const [editProfile, setEditProfile] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
-    const [error, setError] = useState('')
-
+    
     useEffect(() => {
         if (!localStorage.getItem('userToken')) {
             navigate('/');
         }
     }, [navigate]);
+    const [profile, setProfile] = useState({});
+    const [editProfile, setEditProfile] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const [error, setError] = useState('')
+
 
     useEffect(() => {
         const fetchUserProfile = async () => {

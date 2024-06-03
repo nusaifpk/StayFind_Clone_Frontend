@@ -131,8 +131,7 @@ const Confirm = () => {
           booking_id: data.id,
           handler: async (response) => {
             if (response.razorpay_payment_id) {
-              await sendPaymentSuccessEmail(userId, email, totalAmount, "INR", receipt, name, property.name, data.id, checkIn, checkOut, guest, CurrentDate, CurrentTime, StayfindEmail, StayfindPhone);
-
+              await sendPaymentSuccessEmail(userId, email, totalAmount, "INR", receipt, name, property.name, data.id, formatDate(checkIn), formatDate(checkOut), guest, formatDate(CurrentDate), CurrentTime, StayfindEmail, StayfindPhone);
               let timerInterval;
               Swal.fire({
                 title: "Successful Payment",
@@ -208,6 +207,11 @@ const Confirm = () => {
                 <p><u>Edit</u></p>
               </div>
               <p>{formatDate(checkIn)} - {formatDate(checkOut)}</p>
+              <div className='trip_section'>
+                <p>Days</p>
+                <p><u>Edit</u></p>
+              </div>
+              <p>{numOfNights}</p>
               <div className='trip_section'>
                 <p>Guest</p>
                 <p><u>Edit</u></p>

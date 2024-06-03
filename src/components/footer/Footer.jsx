@@ -50,7 +50,7 @@ const Footer = () => {
             </MDBCol>
 
             <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4 useful_links'>
-              <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
+              <h6 className='text-uppercase fw-bold mb-4'>SECTION</h6>
               <p onClick={() => navigate('/')}>Home</p>
               <p onClick={() => navigate('/properties')}>Properties</p>
               <p onClick={() => navigate('/about')}>About</p>
@@ -59,10 +59,10 @@ const Footer = () => {
 
             <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4 useful_links'>
               <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
-              <p>Pricing</p>
-              <p>Setting</p>
-              <p>Booking</p>
-              <p>Help</p>
+              <p onClick={() => navigate('/profile')}>Profile</p>
+              <p onClick={() => navigate('/wishlist')}>Wishlist</p>
+              <p onClick={() => navigate('/booking')}>Booking</p>
+              <p onClick={() => navigate('/')}>Help</p>
             </MDBCol>
 
             <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
@@ -88,7 +88,7 @@ const Footer = () => {
 
       <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
         © {year} Copyright:
-        <a onClick={() => navigate('/')} className='text-reset fw-bold'>
+        <a onClick={() => navigate('/')} className='text-reset fw-bold' style={{cursor:"pointer"}}>
           StayFind.com
         </a>
       </div>

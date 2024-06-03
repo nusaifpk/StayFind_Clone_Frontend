@@ -1,6 +1,6 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
-import stayfindLogo from '../../assets/stayfind.png'; 
+import stayfindLogo from '../../assets/stayfind.png';
 
 const styles = StyleSheet.create({
   page: {
@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const Name = localStorage.getItem('name')
-const Phone = localStorage.getItem('phone')
-const Email = localStorage.getItem('email')
+const Name = localStorage.getItem('name');
+const Phone = localStorage.getItem('phone');
+const Email = localStorage.getItem('email');
 
-const BookingDocument = ({ booking }) => (
+const BookingDocument = ({ booking, user }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>

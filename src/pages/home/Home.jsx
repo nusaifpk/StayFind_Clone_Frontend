@@ -34,6 +34,7 @@ const Home = () => {
           fetch(`${locationUrl}/reverse?lat=${latitude}&lon=${longitude}&format=json`)
             .then(response => response.json())
             .then(data => {
+              console.log(data);
               const placeName = data.address.county;
               setInputValue(placeName);
             })

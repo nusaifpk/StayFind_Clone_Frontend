@@ -23,7 +23,7 @@
 }
 
 .hero_payment_left h2 {
-    padding-top: 20px;
+    padding-top: 5px;
     font-size: 1.5rem;
     padding-bottom: 20px;
 }
@@ -37,6 +37,28 @@
 .trip_section p {
     font-weight: 600;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+    .trip_section {
+        flex-direction: column;
+        gap: 10px;
+        /* Adjust as needed */
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .trip_section {
+        gap: 200px;
+        /* Adjust as needed */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .trip_section {
+        gap: 300px;
+        /* Adjust as needed */
+    }
 }
 
 .pay_section {
@@ -66,11 +88,11 @@
 }
 
 .rupay {
-    height: 50px
+    height: 50px;
 }
 
 .upi {
-    height: 30px
+    height: 30px;
 }
 
 .payment_option input {
@@ -193,11 +215,7 @@
         margin-top: 20px;
     }
 
-    .payment_card_section {
-        border: none;
-    }
 }
-
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .payment_page_container h1 {

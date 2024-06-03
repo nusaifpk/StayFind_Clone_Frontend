@@ -12,10 +12,26 @@ const Booking = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    if (!localStorage.getItem('userToken')) {
+      navigate('/');
+    }
+  }, [navigate]);
+
   const userId = localStorage.getItem('userId');
-  const Name = localStorage.getItem('name');
-  const Phone = localStorage.getItem('phone');
-  const Email = localStorage.getItem('email');
+  const user = {
+    name: localStorage.getItem('name'),
+    phone: localStorage.getItem('phone'),
+    email: localStorage.getItem('email'),
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
 
   const fetchBookings = async () => {
     try {
@@ -84,23 +100,23 @@ const Booking = () => {
             <h5>BILL TO</h5>
             <div>
               <div>
-                <p><strong>Name:</strong> {Name}</p>
-                <p><strong>Phone:</strong> {Phone}</p>
-                <p><strong>Email:</strong> {Email}</p>
+                <p><strong>Name:</strong> {user.name}</p>
+                <p><strong>Phone:</strong> {user.phone}</p>
+                <p><strong>Email:</strong> {user.email}</p>
               </div>
               <div className="bill-details">
                 <p><strong>Hotel Name:</strong> {booking.hotelName}</p>
                 <p><strong>Booking ID:</strong> {booking.bookingId}</p>
-                <p><strong>Check-in Date:</strong> {booking.checkInDate}</p>
-                <p><strong>Check-out Date:</strong> {booking.checkOutDate}</p>
+                <p><strong>Check-in Date:</strong> {formatDate(booking.checkInDate)}</p>
+                <p><strong>Check-out Date:</strong> {formatDate(booking.checkOutDate)}</p>
                 <p><strong>Number of Guests:</strong> {booking.numberOfGuests}</p>
                 <p><strong>Amount:</strong> ₹{booking.amount}/- {booking.currency}</p>
-                <p><strong>Payment Date:</strong> {booking.paymentDate}</p>
+                <p><strong>Payment Date:</strong> {formatDate(booking.paymentDate)}</p>
                 <p><strong>Payment Time:</strong> {booking.paymentTime}</p>
                 <p><strong>Receipt:</strong> {booking.receipt}</p>
               </div>
               <button onClick={() => handleDelete(booking)} className='Wish_Dlete_button'>Delete</button>
-              <PDFDownloadLink document={<BookingDocument booking={booking} />} fileName={`booking_invoice_${booking.bookingId}.pdf`}>
+              <PDFDownloadLink document={<BookingDocument booking={booking} user={user} />} fileName={`booking_invoice_${booking.bookingId}.pdf`}>
                 {({ blob, url, loading, error }) =>
                   loading ? 'Loading document...' : 'Download'
                 }
