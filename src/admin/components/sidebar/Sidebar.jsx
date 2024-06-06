@@ -35,6 +35,9 @@ const Sidebar = () => {
                         <NavLink to='/booking_list' activeClassName="activeClicked" title='Bookings'>
                             <CDBSidebarMenuItem icon='bell'>Bookings</CDBSidebarMenuItem>
                         </NavLink>
+                        <NavLink to='/categories' activeClassName="activeClicked" title='Categories'>
+                            <CDBSidebarMenuItem icon='list'>Categories</CDBSidebarMenuItem>
+                        </NavLink>
                         <NavLink to='/' activeClassName="activeClicked" title='Logout' onClick={handleLogout}>
                             <CDBSidebarMenuItem icon='door-open'>Logout</CDBSidebarMenuItem>
                         </NavLink>

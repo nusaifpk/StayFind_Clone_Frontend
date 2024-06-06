@@ -42,11 +42,7 @@ const AdminLogin = () => {
     }
     catch (error) {
       console.error('Login error:', error);
-      if (error.response && error.response.status === 401) {
-        toast.error("Invalid admin credentials");
-      } else {
-        toast.error("An error occurred during login. Please try again later.");
-      }
+      toast.error(error.response.data.message)
     }
   };
 

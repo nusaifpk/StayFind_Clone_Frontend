@@ -26,6 +26,7 @@ import ProfilePage from './pages/profile/Profile';
 import Contact from './components/contact_us/Contact';
 import Booking from './pages/booking_page/Booking';
 import AdminBooking from './admin/pages/booking_list/AdminBooking';
+import Categories from './admin/pages/categories/Categories';
 
 
 
@@ -40,6 +41,7 @@ function App() {
     '/properties_list',
     '/properties_details',
     '/booking_list',
+    '/categories'
   ];
 
   const currentPath = window.location.pathname;
@@ -78,6 +80,7 @@ function App() {
         <Route path='/properties_list' element={<PropertyList />} />
         <Route path='/properties_list/:id' element={<AdminPropertyDetails />} />
         <Route path='/booking_list' element={<AdminBooking />} />
+        <Route path='/categories' element={<Categories />} />
 
 
       </Routes>

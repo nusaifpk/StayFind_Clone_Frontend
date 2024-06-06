@@ -7,11 +7,13 @@ import { MoonLoader } from "react-spinners"
 import { useNavigate } from 'react-router-dom'
 import cities from "../../../assets/all_cities"
 import adminInstance from '../../../aaxios_instance/AdminAxios'
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 
 const AddProperty = () => {
 
     const navigate = useNavigate()
     const [suggestions, setSuggestions] = useState([])
+    const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(false)
     const [propertyData, setPropertyData] = useState({
         name: '',
@@ -91,6 +93,18 @@ const AddProperty = () => {
     }
 
     useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await adminInstance.get('api/admin/categories');
+                setCategories(response.data.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+        fetchCategories();
+    }, []);
+
+    useEffect(() => {
         if (propertyData.location === '') {
             setSuggestions([])
             return
@@ -114,31 +128,27 @@ const AddProperty = () => {
             <div className='add_property'>
                 <h2>Add Property</h2>
                 <form className='form' onSubmit={handleSubmit}>
-                    <input type="text" id='name' placeholder='Name' value={propertyData.name} onChange={handleChange} className='input_style' required />
+                    <TextField type="text" id="name" label="Name" variant="outlined" value={propertyData.name} onChange={handleChange} required />
                     <select id='category' value={propertyData.category} onChange={handleChange} className='input_style' required>
                         <option value="" disabled hidden className='select_placeholder'>Select</option>
-                        <option value="cabin">Cabin</option>
-                        <option value="resort">Resort</option>
-                        <option value="farm">Farm</option>
-                        <option value="lake">Lake</option>
-                        <option value="villa">Villa</option>
-                        <option value="pool">Pool</option>
-                        <option value="room">Room</option>
+                        {categories.map((category) => (
+                            <option id={category._id} value={category.name}>{category.name}</option>
+                        ))}
                     </select>
-                    <input type="text" id='location' list='location-list' placeholder='Location' value={propertyData.location} onChange={handleChange} className='input_style' required />
+                    <TextField type='text' id="location" label="Location" variant="outlined" inputProps={{ list: 'location-list' }} value={propertyData.location} onChange={handleChange} className='input_style' required />
                     <datalist id='location-list'>
                         {suggestions.map((city) => (
                             <option key={city.id} value={`${city.city}, ${city.state}`}></option>
                         ))}
                     </datalist>
                     <div className='input_property_row'>
-                        <input type="text" id='guest' placeholder='Guest' value={propertyData.guest} onChange={handleChange} className='input_style2' required />
-                        <input type="text" id='bedroom' placeholder='Bedroom' value={propertyData.bedroom} onChange={handleChange} className='input_style2' required />
-                        <input type="text" id='bathroom' placeholder='Bathroom' value={propertyData.bathroom} onChange={handleChange} className='input_style2' required />
+                        <TextField label="Guest" variant="outlined" type="text" id='guest' value={propertyData.guest} onChange={handleChange} className='input_style2' required />
+                        <TextField label="Bedroom" variant="outlined" type="text" id='bedroom' value={propertyData.bedroom} onChange={handleChange} className='input_style2' required />
+                        <TextField label="Bathroom" variant="outlined" type="text" id='bathroom' value={propertyData.bathroom} onChange={handleChange} className='input_style2' required />
                     </div>
                     <textarea id='description' placeholder='Description' value={propertyData.description} onChange={handleChange} className='textarea_style' required />
                     <input type="file" id='images' accept='image/*' onChange={handleChange} className='file_input_style' required multiple />
-                    <input type="text" id='price' placeholder='Price' value={propertyData.price} onChange={handleChange} className='input_style' required />
+                    <TextField type='text' id="price" label="Price" variant="outlined" value={propertyData.price} onChange={handleChange} className='input_style' required />
                     <Button type='submit' variant='success' className='submit_button_style'>Add property {loading && (
                         <div className='spinner-overlay'>
                             <MoonLoader color='#e15b64' loading={loading} size={40} />

@@ -22,7 +22,6 @@ const OtpVerification = () => {
       const response = await userInstance.post('/api/users/verifyotp', { phone, otp });
       if (response.data.success) {
         const registerResponse = await userInstance.post('/api/users/register', formData);
-        console.log('Register Response:', registerResponse.data); // Add this log
         if (registerResponse.data.status === "success") {
           toast.success('Registration Success...');
           navigate('/login');

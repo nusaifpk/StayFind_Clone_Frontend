@@ -101,9 +101,9 @@ const Registration = () => {
             </div>
 
             <Button type='submit' className='btn' variant='danger' disabled={isSubmitting}>
-              {loading ? (
-                <RingLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
-              ) : <div>Sign Up</div>}
+            {loading ? (
+           <RingLoader color="#fff" loading={loading} size={5} style={{alignItems:"center"}}/>
+        ) :  <div>Sign Up</div> }
             </Button>
 
             <div className='member'>

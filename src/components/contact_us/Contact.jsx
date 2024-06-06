@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { SyncLoader } from 'react-spinners';
 import userInstance from '../../aaxios_instance/UserAxios';
 import Swal from 'sweetalert2';
+import { TextField } from '@mui/material';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -15,7 +16,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await userInstance.post('http://localhost:5000/api/users/enquiry', { name, email, message });
+      const response = await userInstance.post('/api/users/enquiry', { name, email, message });
       console.log(response);
       Swal.fire({
         position: "center",
@@ -47,29 +48,10 @@ const Contact = () => {
         <h2>Contact Us</h2>
         <form onSubmit={handleSubmit} className="contact_form">
           <div className="form_group">
-            <label htmlFor="name" className="contact_form_label">Name:</label>
-            <input
-              placeholder="Name"
-              className="contact_form_input"
-              type="text"
-              id="name"
-              value={name}
-              onClick={handleInputClick}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+            <TextField id="name" label="Name" variant="outlined" type='text' value={name} onClick={handleInputClick} onChange={(e) => setName(e.target.value)} required/>
           </div>
           <div className="form_group">
-            <label htmlFor="email" className="contact_form_label">Email:</label>
-            <input
-              placeholder="Email"
-              className="contact_form_input"
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <TextField id="email" label="Email" variant="outlined" type='text' value={email} onChange={(e) => setEmail(e.target.value)} required/>
           </div>
           <div className="form_group">
             <label htmlFor="message" className="form_label">Message:</label>
