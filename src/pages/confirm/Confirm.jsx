@@ -7,7 +7,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import userInstance from '../../aaxios_instance/UserAxios';
 import { SyncLoader } from 'react-spinners';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 const Confirm = () => {
 
@@ -100,7 +100,6 @@ const Confirm = () => {
       console.error('Error sending email:', error);
     }
   };
-
   const handlePayment = async () => {
     setLoading(true)
     setTimeout(async () => {
@@ -117,7 +116,7 @@ const Confirm = () => {
           receipt
         });
 
-        console.log('Payment response:', response);
+        
 
         const { data } = response.data;
 
@@ -132,35 +131,35 @@ const Confirm = () => {
           handler: async (response) => {
             if (response.razorpay_payment_id) {
               await sendPaymentSuccessEmail(userId, email, totalAmount, "INR", receipt, name, property.name, data.id, formatDate(checkIn), formatDate(checkOut), guest, formatDate(CurrentDate), CurrentTime, StayfindEmail, StayfindPhone);
-              let timerInterval;
-              Swal.fire({
-                title: "Successful Payment",
-                html: "Redirecting to booking page in <b></b> seconds.",
-                timer: 5000,
-                timerProgressBar: true,
-                didOpen: () => {
-                  Swal.showLoading();
-                  const timer = Swal.getPopup().querySelector("b");
-                  const endTime = Date.now() + Swal.getTimerLeft();
-                  timerInterval = setInterval(() => {
-                    const remainingTime = Math.round((endTime - Date.now()) / 1000);
-                    if (remainingTime >= 0) {
-                      timer.textContent = `${remainingTime}`;
-                    } else {
-                      clearInterval(timerInterval);
-                      Swal.close();
-                    }
-                  }, 1000);
-                },
-                willClose: () => {
-                  clearInterval(timerInterval);
-                }
-              }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                  navigate(`/booking`);
-                }
-              });
-
+              // let timerInterval;
+              // Swal.fire({
+              //   title: "Successful Payment",
+              //   html: "Redirecting to booking page in <b></b> seconds.",
+              //   timer: 5000,
+              //   timerProgressBar: true,
+              //   didOpen: () => {
+              //     Swal.showLoading();
+              //     const timer = Swal.getPopup().querySelector("b");
+              //     const endTime = Date.now() + Swal.getTimerLeft();
+              //     timerInterval = setInterval(() => {
+              //       const remainingTime = Math.round((endTime - Date.now()) / 1000);
+              //       if (remainingTime >= 0) {
+              //         timer.textContent = `${remainingTime}`;
+              //       } else {
+              //         clearInterval(timerInterval);
+              //         Swal.close();
+              //       }
+              //     }, 1000);
+              //   },
+              //   willClose: () => {
+              //     clearInterval(timerInterval);
+              //   }
+              // }).then((result) => {
+              //   if (result.dismiss === Swal.DismissReason.timer) {
+              //     navigate(`/booking`);
+              //   }
+              // });
+              navigate(`/review?propertyId=${propertyId}`)
             } else {
               toast.error("Payment failed or incomplete. Please try again.");
             }

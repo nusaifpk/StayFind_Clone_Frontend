@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { useNavigate } from 'react-router-dom';
 import userInstance from '../../aaxios_instance/UserAxios';
+import { Button } from '@mui/material';
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -91,7 +92,7 @@ const Profile = () => {
                         </form>
                         {isEditing && (
                             <span className='save-icon' onClick={handleEditProfile} >
-                                <button >Save</button>
+                             <Button variant="contained" color="success">Save</Button>
                             </span>
                         )}
                     </div>

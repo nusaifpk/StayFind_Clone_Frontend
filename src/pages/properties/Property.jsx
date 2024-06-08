@@ -4,11 +4,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import cities from '../../assets/all_cities';
 import userInstance from '../../aaxios_instance/UserAxios';
+import { TextField } from '@mui/material';
 
 const Property = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [properties, setProperties] = useState([]);
+    const [overallRating, setOverallRating] = useState('');
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('all');
     const [suggestions, setSuggestions] = useState([]);
@@ -29,7 +31,7 @@ const Property = () => {
             try {
                 const response = await userInstance.get(`/api/users/properties/`);
                 setProperties(response.data.data);
-
+                console.log(response);
                 const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
                 setFavorites(storedFavorites);
 
@@ -109,25 +111,22 @@ const Property = () => {
         setSearch(e.target.value);
     };
 
-    // Filter properties based on search and category
     const filteredProperties = properties.filter(property => {
         const matchesLocation = property.location.toLowerCase().includes(search.toLowerCase());
         const matchesCategory = category === 'all' || property.category === category;
         return matchesLocation && matchesCategory;
     });
 
-    // Paginate properties
     const indexOfLastProperty = currentPage * itemsPerPage;
     const indexOfFirstProperty = indexOfLastProperty - itemsPerPage;
     const currentProperties = filteredProperties.slice(indexOfFirstProperty, indexOfLastProperty);
 
-    // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className='main_property_container'>
             <h2 className='main_text'>Available Now</h2>
-            <input type="search" placeholder='Search location' list='city-suggestions' value={search} onChange={handleSearch} className='search_property' />
+            <TextField type="search" list='city-suggestions' value={search} onChange={handleSearch} className='search_property' label="Search Location" variant="outlined" />
             <datalist id="city-suggestions">
                 {suggestions.map((city) => (
                     <option key={city.id} value={`${city.city}, ${city.state}`} />
@@ -161,11 +160,11 @@ const Property = () => {
                             </div>
                             <div className="details">
                                 <h3 className="name">{property.name}</h3>
+                                <h6>★{property.overallRating}</h6>
                                 <p className='property_location'><i className='fas fa-map-marker-alt' /> {property.location}</p>
                                 <p className="description"><i className="fas fa-users" /> {property.guest} Guests
                                     • <i className="fas fa-bed" /> {property.bedroom} Bedrooms
                                     • <i className="fas fa-bath" /> {property.bathroom} Bathrooms
-                                    {/* <p className="rating">★{property.rating.toFixed(1)}</p> */}
                                 </p>
                                 <div className="price">
                                     <span className="new-price">₹{property.price.toLocaleString()}/- <span className='span_price'>night</span></span>

@@ -189,6 +189,7 @@
 
 .profile_name_loc p {
     margin-top: -10px;
+    margin-bottom: -20px;
     font-size: 14px;
     color: rgb(44, 44, 44);
 }
@@ -225,14 +226,24 @@
     color: black;
 }
 
+.name_rating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 
 
 
+.review_date{
+    display: flex;
+    align-items: center;
+    margin-bottom: -10px;
+}
 
 .review_grid {
     --gap: 10px;
-    --num-cols: 2;
+    /* --num-cols: 2; */
     --row-height: auto;
 
     box-sizing: border-box;

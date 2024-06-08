@@ -27,6 +27,7 @@ import Contact from './components/contact_us/Contact';
 import Booking from './pages/booking_page/Booking';
 import AdminBooking from './admin/pages/booking_list/AdminBooking';
 import Categories from './admin/pages/categories/Categories';
+import Review from './pages/review_rating/Review';
 
 
 
@@ -67,6 +68,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/confirm/:propertyId' element={<Confirm />} />
         <Route path='/booking' element={<Booking />} />
+        <Route path='/review' element={<Review />} />
         <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/trip' element={<Trip />} />
         <Route path='/profile' element={<ProfilePage />} />
