@@ -26,6 +26,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             const response = await userInstance.get(`/api/users/profile/${userId}`);
+            console.log(response);
             setProfile(response.data.data);
             setEditProfile(response.data.data.username);
             setPreviewImg(response.data.data.profileImg);
