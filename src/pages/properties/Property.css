@@ -121,6 +121,9 @@
 .favorite_icon:hover {
     font-size: 28px;
 }
+.favorite_icon.black {
+    color: black;
+}
 
 /* Paging */
 .pagination {
@@ -206,4 +209,15 @@
     height: 14px;
     width: 90%;
     margin: 5px auto;
+}
+
+
+@media (max-width: 768px) {
+    .favorite_icon.red {
+        color: red;
+    }
+
+    .favorite_icon.black {
+        color: black; 
+    }
 }
