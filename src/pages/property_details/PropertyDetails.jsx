@@ -6,24 +6,7 @@ import { differenceInCalendarDays } from "date-fns";
 import { toast } from 'react-hot-toast';
 import userInstance from '../../aaxios_instance/UserAxios';
 import Rating from '@mui/material/Rating';
-
-
-const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
-  5: 'Excellent+',
-};
-
-function getLabelText(value) {
-  return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
-}
+import tempLogo from '../../assets/temporary-profile.png'
 
 const PropertyDetails = () => {
 
@@ -255,31 +238,35 @@ const PropertyDetails = () => {
           </div>
           <h2 className='review_text'>{reviewCount} Reviews</h2>
           <div className='review_grid'>
-            {reviews.length > 0 ? (
-              reviews.map((review) => {
-                const reviewDate = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(review.createdAt));
-                return (
-                  <div className="review_section" key={review._id}>
-                    <div className='profile_head'>
-                      <img src="https://cdn-icons-png.flaticon.com/128/64/64572.png" alt="profile" />
-                      <div className='profile_name_loc'>
-                        <h6>{review.userId.username}</h6>
-                        <p>India</p>
-                      </div>
-                    </div>
-                    
-                    <p className='review_date'>
-                    <Rating name="read-only" value={review.rating} size='small' readOnly sx={{ fontSize: '12px' }} />
-                    &nbsp;•&nbsp;<span style={{fontSize:"14px"}}> <b>{reviewDate}</b></span></p>
-                    <p className='review'>{review.review}</p>
-                  </div>
-                );
-              })
-            ) : (
-              <p>Be the first reviewer</p>
-            )}
-
+  {reviews.length > 0 ? (
+    reviews.map((review) => {
+      const reviewDate = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(review.createdAt));
+      const userProfileImg = review.userId.profileImg || tempLogo
+      return (
+        <div className="review_section" key={review._id}>
+          <div className='profile_head'>
+            <div className='profile_image_wrapper'>
+              <img src={userProfileImg} alt={review.userId.username} />
+            </div>
+            <div className='profile_name_loc'>
+              <h6>{review.userId.username}</h6>
+              <p>India</p>
+            </div>
           </div>
+          
+          <p className='review_date'>
+            <Rating name="read-only" value={review.rating} size='small' readOnly sx={{ fontSize: '12px' }} />
+            &nbsp;•&nbsp;<span style={{fontSize:"14px"}}> <b>{reviewDate}</b></span>
+          </p>
+          <p className='review'>{review.review}</p>
+        </div>
+      );
+    })
+  ) : (
+    <p>Be the first reviewer by booking this property</p>
+  )}
+</div>
+
           <hr />
           <div className='remember_section'>
             <h2>Thinks You should know</h2>
