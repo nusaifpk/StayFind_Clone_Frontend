@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import '../../styles/RegLog.css';
 import Button from 'react-bootstrap/esm/Button';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { RingLoader } from 'react-spinners';
+import { PropagateLoader } from 'react-spinners';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import userInstance from '../../aaxios_instance/UserAxios';
@@ -97,9 +97,14 @@ const Registration = () => {
               </label>
             </div>
 
-            <Button type='submit' className='btn' variant='danger' disabled={isSubmitting}>
+            {/* <Button type='submit' className='btn' variant='danger' disabled={isSubmitting}>
               {loading ? (
                 <RingLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
+              ) : <div>Sign Up</div>}
+            </Button> */}
+            <Button type="submit" className='btn' variant="contained" color="danger" onClick={handlePost} disabled={isSubmitting}>
+            {loading ? (
+                <PropagateLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
               ) : <div>Sign Up</div>}
             </Button>
 
