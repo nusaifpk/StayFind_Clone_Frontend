@@ -85,7 +85,7 @@ export default function ScrollDialog() {
               By using StayFind, you acknowledge that you have read, understood, and agree to abide by these terms and conditions. If you do not agree with any part of these terms and conditions, please do not use StayFind.
             </p>
             <p>
-              For any questions or concerns regarding these terms and conditions, please contact us at <a href="mailto:contactstayfind@gmail.com">contactstayfind@gmail</a>.
+              For any questions or concerns regarding these terms and conditions, please contact us at <a href="mailto:contactstayfind@gmail.com">contactstayfind@gmail.com</a>.
             </p>
           </DialogContentText>
         </DialogContent>
