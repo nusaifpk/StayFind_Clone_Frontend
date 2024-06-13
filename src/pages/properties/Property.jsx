@@ -161,9 +161,9 @@ const Property = () => {
                                     }}
                                 >
                                     {favorites.includes(property._id) ? (
-                                        <FavoriteIcon color="error" fontSize="large" />
+                                        <FavoriteIcon color="error" fontSize="small" /> /* Use small size */
                                     ) : (
-                                        <FavoriteBorderIcon fontSize="large" />
+                                        <FavoriteBorderIcon fontSize="small" /> /* Use small size */
                                     )}
                                 </IconButton>
                             </div>
