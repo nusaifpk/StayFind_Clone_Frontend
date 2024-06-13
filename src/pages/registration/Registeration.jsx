@@ -45,20 +45,22 @@ const Registration = () => {
       return;
     }
 
-    try {
-      const otpResponse = await userInstance.post(`/api/users/sentotp`, { phone: values.phone });
-
-      if (otpResponse && otpResponse.status === 200) {
-        toast('Oops...Redirecting to OTP verification');
-        navigate('/otpverification', { state: { formData: values, phone: values.phone } });
-      }
-    } catch (error) {
-      console.log('Error in registration: ', error);
-      toast.error(error.response.data.message);
-    } finally {
-      setLoading(false);
-      setSubmitting(false);
-    }
+    setTimeout(() => {
+      try {
+        const otpResponse = await userInstance.post(`/api/users/sentotp`, { phone: values.phone });
+  
+        if (otpResponse && otpResponse.status === 200) {
+          toast('Oops...Redirecting to OTP verification');
+          navigate('/otpverification', { state: { formData: values, phone: values.phone } });
+        }
+      } catch (error) {
+        console.log('Error in registration: ', error);
+        toast.error(error.response.data.message);
+      } finally {
+        setLoading(false);
+        setSubmitting(false);
+      } 
+    }, 2000);
   };
 
   return (
