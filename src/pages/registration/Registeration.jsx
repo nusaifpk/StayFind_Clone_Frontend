@@ -97,7 +97,7 @@ const Registration = () => {
               </label>
             </div>
 
-            <Button className='btn' variant="contained" color="primary" disabled={isSubmitting || loading}>
+            <Button type="submit" className='btn' variant="contained" color="danger" disabled={isSubmitting || loading}>
               {loading ? (
                 <PropagateLoader color="#fff" loading={loading} size={10} />
               ) : <div>Sign Up</div>}
