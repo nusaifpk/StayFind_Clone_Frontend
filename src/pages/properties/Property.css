@@ -115,12 +115,14 @@
     right: 10px;
     font-size: 24px;
     cursor: pointer;
-    transition: font-size 0.2s ease;
+    color: black;
+    transition: font-size 0.2s ease, color 0.2s ease;
 }
 
 .favorite_icon:hover {
     font-size: 28px;
 }
+
 .favorite_icon.black {
     color: black;
 }
@@ -211,13 +213,12 @@
     margin: 5px auto;
 }
 
-
 @media (max-width: 768px) {
-    .favorite_icon.red {
-        color: red;
+    .favorite_icon {
+        color: black;
     }
 
-    .favorite_icon.black {
-        color: black; 
+    .favorite_icon.red {
+        color: red;
     }
 }
