@@ -9,7 +9,6 @@
 
 .main_text span {
     font-weight: 600;
-    /* text-decoration: underline; */
 }
 
 .search_property {
@@ -47,7 +46,6 @@
 }
 
 .card:hover {
-    /* transform: scale(1.005); */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -115,16 +113,20 @@
     right: 10px;
     font-size: 24px;
     cursor: pointer;
-    color: black;
+    color: black; 
     transition: font-size 0.2s ease, color 0.2s ease;
 }
 
 .favorite_icon:hover {
-    font-size: 28px;
+    font-size: 28px; 
 }
 
 .favorite_icon.black {
-    color: black;
+    color: black; 
+}
+
+.favorite_icon.red {
+    color: red; 
 }
 
 /* Paging */

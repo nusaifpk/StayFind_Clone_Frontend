@@ -7,6 +7,9 @@ import { toast } from 'react-hot-toast';
 import userInstance from '../../aaxios_instance/UserAxios';
 import Rating from '@mui/material/Rating';
 import tempLogo from '../../assets/temporary-profile.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 const PropertyDetails = () => {
 
@@ -34,7 +37,7 @@ const PropertyDetails = () => {
       try {
         const response = await userInstance.get(`/api/users/properties/${id}`);
         setProperty(response.data.data);
-        
+
         const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
         setFavorites(storedFavorites);
       } catch (error) {
@@ -162,9 +165,12 @@ const PropertyDetails = () => {
                 onClick={(e) => {
                   e.stopPropagation();
                   handleSave(property._id);
-                }}>
-                &#10084;
-                Save</span>
+                }}
+              >
+                <FontAwesomeIcon icon={faHeart} />
+                &nbsp;Save
+              </span>
+
             </div>
           </div>
           <div className="image-grid">
@@ -175,7 +181,7 @@ const PropertyDetails = () => {
             <img src={property.images[4]} alt="" />
           </div>
           <h3>{property.name}</h3>
-          <h5 style={{textAlign:"start"}}>★{overallrating}</h5>
+          <h5 style={{ textAlign: "start" }}>★{overallrating}</h5>
           <p className='property_location'><i className='fas fa-map-marker-alt' /> {property.location}</p>
           <p className="description"><i className="fas fa-users" /> {property.guest} Guests
             • <i className="fas fa-bed" /> {property.bedroom} Bedrooms
@@ -238,34 +244,34 @@ const PropertyDetails = () => {
           </div>
           <h2 className='review_text'>{reviewCount} Reviews</h2>
           <div className='review_grid'>
-  {reviews.length > 0 ? (
-    reviews.map((review) => {
-      const reviewDate = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(review.createdAt));
-      const userProfileImg = review.userId.profileImg || tempLogo
-      return (
-        <div className="review_section" key={review._id}>
-          <div className='profile_head'>
-            <div className='profile_image_wrapper'>
-              <img src={userProfileImg} alt={review.userId.username} />
-            </div>
-            <div className='profile_name_loc'>
-              <h6>{review.userId.username}</h6>
-              <p>India</p>
-            </div>
+            {reviews.length > 0 ? (
+              reviews.map((review) => {
+                const reviewDate = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(review.createdAt));
+                const userProfileImg = review.userId.profileImg || tempLogo
+                return (
+                  <div className="review_section" key={review._id}>
+                    <div className='profile_head'>
+                      <div className='profile_image_wrapper'>
+                        <img src={userProfileImg} alt={review.userId.username} />
+                      </div>
+                      <div className='profile_name_loc'>
+                        <h6>{review.userId.username}</h6>
+                        <p>India</p>
+                      </div>
+                    </div>
+
+                    <p className='review_date'>
+                      <Rating name="read-only" value={review.rating} size='small' readOnly sx={{ fontSize: '12px' }} />
+                      &nbsp;•&nbsp;<span style={{ fontSize: "14px" }}> <b>{reviewDate}</b></span>
+                    </p>
+                    <p className='review'>{review.review}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Be the first reviewer by booking this property</p>
+            )}
           </div>
-          
-          <p className='review_date'>
-            <Rating name="read-only" value={review.rating} size='small' readOnly sx={{ fontSize: '12px' }} />
-            &nbsp;•&nbsp;<span style={{fontSize:"14px"}}> <b>{reviewDate}</b></span>
-          </p>
-          <p className='review'>{review.review}</p>
-        </div>
-      );
-    })
-  ) : (
-    <p>Be the first reviewer by booking this property</p>
-  )}
-</div>
 
           <hr />
           <div className='remember_section'>
