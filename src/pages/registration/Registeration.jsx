@@ -45,7 +45,7 @@ const Registration = () => {
       return;
     }
 
-    setTimeout(() => {
+    setTimeout(async() => {
       try {
         const otpResponse = await userInstance.post(`/api/users/sentotp`, { phone: values.phone });
   
