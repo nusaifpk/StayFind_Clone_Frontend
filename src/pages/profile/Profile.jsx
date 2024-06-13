@@ -25,7 +25,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchUserProfile = async () => {
-            const response = await userInstance.get(`http://localhost:5000/api/users/profile/${userId}`);
+            const response = await userInstance.get(`/api/users/profile/${userId}`);
             setProfile(response.data.data);
             setEditProfile(response.data.data.username);
             setPreviewImg(response.data.data.profileImg);
@@ -46,7 +46,7 @@ const Profile = () => {
                 formData.append('profileImg', profileImg);
             }
 
-            await userInstance.put(`http://localhost:5000/api/users/profile/${userId}`, formData);
+            await userInstance.put(`/api/users/profile/${userId}`, formData);
 
             setProfile({ ...profile, username: editProfile });
             localStorage.setItem('username', editProfile);
