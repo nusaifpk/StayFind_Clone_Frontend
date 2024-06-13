@@ -8,7 +8,7 @@ import { PropagateLoader } from 'react-spinners';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import userInstance from '../../aaxios_instance/UserAxios';
-import ScrollDialog from '../../components/terms/Terms.jsx'; 
+import ScrollDialog from '../../components/terms/Terms.jsx';
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -45,22 +45,20 @@ const Registration = () => {
       return;
     }
 
-    setTimeout(async() => {
-      try {
-        const otpResponse = await userInstance.post(`/api/users/sentotp`, { phone: values.phone });
-  
-        if (otpResponse && otpResponse.status === 200) {
-          toast('Oops...Redirecting to OTP verification');
-          navigate('/otpverification', { state: { formData: values, phone: values.phone } });
-        }
-      } catch (error) {
-        console.log('Error in registration: ', error);
-        toast.error(error.response.data.message);
-      } finally {
-        setLoading(false);
-        setSubmitting(false);
-      } 
-    }, 2000);
+    try {
+      const otpResponse = await userInstance.post(`/api/users/sentotp`, { phone: values.phone });
+
+      if (otpResponse && otpResponse.status === 200) {
+        toast('Oops...Redirecting to OTP verification');
+        navigate('/otpverification', { state: { formData: values, phone: values.phone } });
+      }
+    } catch (error) {
+      console.log('Error in registration: ', error);
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -99,19 +97,14 @@ const Registration = () => {
               </label>
             </div>
 
-            {/* <Button type='submit' className='btn' variant='danger' disabled={isSubmitting}>
+            <Button type="submit" className='btn' variant="contained" color="primary" disabled={isSubmitting || loading}>
               {loading ? (
-                <RingLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
-              ) : <div>Sign Up</div>}
-            </Button> */}
-            <Button type="submit" className='btn' variant="contained" color="danger" onClick={handlePost} disabled={isSubmitting}>
-            {loading ? (
-                <PropagateLoader color="#fff" loading={loading} size={5} />
+                <PropagateLoader color="#fff" loading={loading} size={10} />
               ) : <div>Sign Up</div>}
             </Button>
 
             <div className='member'>
-              Already a member? <Link to='/login'><a><u>Login here</u></a></Link>
+              Already a member? <Link to='/login'><u>Login here</u></Link>
             </div>
           </Form>
         )}
