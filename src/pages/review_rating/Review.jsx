@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import "./Review.css";
 import { Button } from '@mui/material';
-import {PropagateLoader } from 'react-spinners';
+import { PropagateLoader } from 'react-spinners';
 import userInstance from '../../aaxios_instance/UserAxios';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -22,23 +22,22 @@ function getLabelText(value) {
 }
 
 const Review = () => {
+    const navigate = useNavigate();
+    const userId = localStorage.getItem('userId');
+    const [searchParams] = useSearchParams();
 
-    const navigate = useNavigate()
-    const userId = localStorage.getItem('userId')
-    const [searchParams] = useSearchParams()
-
-    const propertyId = searchParams.get('propertyId')
+    const propertyId = searchParams.get('propertyId');
 
     const [value, setValue] = useState(0);
     const [review, setReview] = useState('');
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     const [hover, setHover] = useState(-1);
 
     const handlePost = async (e) => {
         e.preventDefault();
         setLoading(true);
-    
+
         setTimeout(async () => {
             try {
                 await userInstance.post('/api/users/review', { userId, propertyId, rating: value, review });
@@ -51,20 +50,18 @@ const Review = () => {
             }
         }, 1500);
     };
-    
-    
-    
+
     return (
         <div className='review_container'>
             <div className='review_rating_section'>
                 <h4>Thank you for using StayFind for your booking.</h4>
                 <h5>Kindly add your review and rating for the property</h5>
                 <div className="rating_section">
-                    <Box sx={{ width: 250, display: 'flex', alignItems: 'center' }}>
+                    <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
                         <Rating
                             name="hover-feedback"
                             value={value}
-                            precision={1} 
+                            precision={1}
                             getLabelText={getLabelText}
                             onChange={(event, newValue) => {
                                 setValue(newValue);
@@ -77,8 +74,6 @@ const Review = () => {
                             sx={{ fontSize: 40 }}
                         />
 
-
-
                         {value !== null && (
                             <Box sx={{ ml: 2, fontSize: 24 }}>{labels[hover !== -1 ? hover : value]}</Box>
                         )}
@@ -86,11 +81,13 @@ const Review = () => {
                 </div>
                 <div className="review_section">
                     <textarea value={review} onChange={(e) => setReview(e.target.value)} />
-                    <Button className='post_btn' variant="contained" color="success" onClick={handlePost}>{loading ? (
-                        <PropagateLoader color="#fff" loading={loading} size={5} />
-                    ) : (
-                        'POST'
-                    )}</Button>
+                    <Button className='post_btn' variant="contained" color="success" onClick={handlePost}>
+                        {loading ? (
+                            <PropagateLoader color="#fff" loading={loading} size={5} />
+                        ) : (
+                            'POST'
+                        )}
+                    </Button>
                 </div>
             </div>
         </div>
