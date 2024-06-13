@@ -5,6 +5,10 @@ import { toast } from 'react-hot-toast';
 import cities from '../../assets/all_cities';
 import userInstance from '../../aaxios_instance/UserAxios';
 import { TextField } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
 
 const Property = () => {
     const navigate = useNavigate();
@@ -149,14 +153,19 @@ const Property = () => {
                         <div key={property._id} className="card" onClick={() => navigate(`/properties/${property._id}?name=${property.name}&location=${property.location}`)}>
                             <div className="card_img_container">
                                 <img src={property.images[0]} alt={property.name} className='image' />
-                                <span
-                                    className={favorites.includes(property._id) ? "favorite_icon red" : "favorite_icon black"}
+                                <IconButton
+                                    className="favorite_icon"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         toggleFavorite(property._id);
-                                    }}>
-                                    &#10084;
-                                </span>
+                                    }}
+                                >
+                                    {favorites.includes(property._id) ? (
+                                        <FavoriteIcon color="error" fontSize="large" />
+                                    ) : (
+                                        <FavoriteBorderIcon fontSize="large" />
+                                    )}
+                                </IconButton>
                             </div>
                             <div className="details">
                                 <h3 className="name">{property.name}</h3>
