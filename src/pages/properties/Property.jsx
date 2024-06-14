@@ -85,7 +85,7 @@ const Property = () => {
                 await userInstance.delete(`/api/users/wishlist/${userId}`, { data: { propertyId: id } });
                 toast("Item removed ...");
 
-                localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+                localStorage.removeItem('favorites', JSON.stringify(updatedFavorites));
             } else {
                 updatedFavorites.push(id);
                 await userInstance.post(`/api/users/wishlist/${userId}`, { propertyId: id });
