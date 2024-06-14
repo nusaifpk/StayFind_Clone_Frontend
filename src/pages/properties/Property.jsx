@@ -4,8 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import cities from '../../assets/all_cities';
 import userInstance from '../../aaxios_instance/UserAxios';
-import { TextField, IconButton } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { TextField } from '@mui/material';
 
 const Property = () => {
     const navigate = useNavigate();
@@ -147,16 +146,16 @@ const Property = () => {
                         <div key={property._id} className="card" onClick={() => navigate(`/properties/${property._id}?name=${property.name}&location=${property.location}`)}>
                             <div className="card_img_container">
                                 <img src={property.images[0]} alt={property.name} className='image' />
-                                <IconButton
-                                    className={favorites.includes(property._id) ? "favorite_icon red" : "favorite_icon black"}
+                                <span
+                                    className={`favorite_icon ${favorites.includes(property._id) ? "red" : "black"}`}
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         toggleFavorite(property._id);
                                     }}
                                     aria-label="add to favorites"
                                 >
-                                    <FavoriteIcon />
-                                </IconButton>
+                                    &#10084;
+                                </span>
                             </div>
                             <div className="details">
                                 <h3 className="name">{property.name}</h3>
@@ -189,4 +188,3 @@ const Property = () => {
 };
 
 export default Property;
-
