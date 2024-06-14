@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import '../../styles/RegLog.css';
-import { Button } from '@mui/material';
+import Button from 'react-bootstrap/esm/Button'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { PropagateLoader } from 'react-spinners';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -97,7 +97,7 @@ const Registration = () => {
               </label>
             </div>
 
-            <Button type="submit" className='btn' variant="contained" color="danger" disabled={isSubmitting || loading}>
+            <Button type="submit" className='btn' variant='danger' disabled={isSubmitting || loading}>
               {loading ? (
                 <PropagateLoader color="#fff" loading={loading} size={10} />
               ) : <div>Sign Up</div>}
