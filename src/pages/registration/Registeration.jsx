@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import '../../styles/RegLog.css';
-import Button from 'react-bootstrap/esm/Button'
+import Button from 'react-bootstrap/Button';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { PropagateLoader } from 'react-spinners';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import userInstance from '../../aaxios_instance/UserAxios';
+import userInstance from '../../axios_instance/UserAxios';
 import ScrollDialog from '../../components/terms/Terms.jsx';
 
 const Registration = () => {
@@ -24,12 +24,10 @@ const Registration = () => {
     password: Yup.string().min(4, 'Min 4 character!').required('Password is required...!'),
   });
 
-  // Checkbox validation
   const handleCheckbox = () => {
     setAgree(!agree);
   };
 
-  // Password visibility
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -37,7 +35,6 @@ const Registration = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     setLoading(true);
 
-    // Checkbox validation
     if (!agree) {
       toast.error('Please agree to the terms & conditions');
       setLoading(false);
@@ -93,14 +90,14 @@ const Registration = () => {
             <div className='terms'>
               <input type='checkbox' id='checkbox' className='terms_input' checked={agree} onChange={handleCheckbox} />
               <label htmlFor='checkbox'>
-                 <ScrollDialog /> 
+                <ScrollDialog />
               </label>
             </div>
 
-            <Button type="submit" className='btn' variant='danger' disabled={isSubmitting || loading}>
+            <Button type="submit" className='btn' variant='primary' disabled={isSubmitting || loading}>
               {loading ? (
                 <PropagateLoader color="#fff" loading={loading} size={10} />
-              ) : <div>Sign Up</div>}
+              ) : 'Sign Up'}
             </Button>
 
             <div className='member'>
