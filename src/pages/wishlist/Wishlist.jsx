@@ -33,9 +33,13 @@ const Wishlist = () => {
   const handleDeleteSingle = async (id) => {
     try {
       await userInstance.delete(`/api/users/wishlist/${userId}`, { data: { propertyId: id } });
-      localStorage.removeItem('favorites');
+      
+      const updatedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const newFavorites = updatedFavorites.filter(favId => favId !== id);
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      
       setWishlist(wishlist.filter((item) => item._id !== id));
-      toast.success('Property removed..');
+      toast.success('Property removed.');
     } catch (error) {
       console.log("Error removing from wishlist: ", error);
     }

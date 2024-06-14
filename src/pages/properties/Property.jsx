@@ -4,13 +4,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import cities from '../../assets/all_cities';
 import userInstance from '../../aaxios_instance/UserAxios';
-import { TextField } from '@mui/material';
+import { TextField, IconButton } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Property = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [properties, setProperties] = useState([]);
-    const [overallRating, setOverallRating] = useState('');
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('all');
     const [suggestions, setSuggestions] = useState([]);
@@ -29,14 +29,26 @@ const Property = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await userInstance.get(`/api/users/properties/`);
-                setProperties(response.data.data);
+                const response = await userInstance.get(`/api/users/properties`);
+                const fetchedProperties = response.data.data;
+
+                const propertiesWithRating = await Promise.all(
+                    fetchedProperties.map(async (property) => {
+                        const ratingResponse = await userInstance.get(`/api/users/properties/${property._id}/review`);
+                        const overallRating = ratingResponse.data.overallRating || "0.0"; 
+
+                        return {
+                            ...property,
+                            overallRating,
+                        };
+                    })
+                );
+
+                setProperties(propertiesWithRating);
                 const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
                 setFavorites(storedFavorites);
 
-                setTimeout(() => {
-                    setLoading(false);
-                }, 1000);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setLoading(false);
@@ -84,7 +96,7 @@ const Property = () => {
                 await userInstance.delete(`/api/users/wishlist/${userId}`, { data: { propertyId: id } });
                 toast("Item removed ...");
 
-                localStorage.removeItem('favorites', JSON.stringify(updatedFavorites));
+                localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
             } else {
                 updatedFavorites.push(id);
                 await userInstance.post(`/api/users/wishlist/${userId}`, { propertyId: id });
@@ -146,16 +158,16 @@ const Property = () => {
                         <div key={property._id} className="card" onClick={() => navigate(`/properties/${property._id}?name=${property.name}&location=${property.location}`)}>
                             <div className="card_img_container">
                                 <img src={property.images[0]} alt={property.name} className='image' />
-                                <span
-                                    className={`favorite_icon ${favorites.includes(property._id) ? "red" : "black"}`}
+                                <IconButton
+                                    className={favorites.includes(property._id) ? "favorite_icon red" : "favorite_icon black"}
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         toggleFavorite(property._id);
                                     }}
                                     aria-label="add to favorites"
                                 >
-                                    &#10084;
-                                </span>
+                                    <FavoriteIcon />
+                                </IconButton>
                             </div>
                             <div className="details">
                                 <h3 className="name">{property.name}</h3>
@@ -188,3 +200,4 @@ const Property = () => {
 };
 
 export default Property;
+

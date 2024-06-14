@@ -7,8 +7,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { PropagateLoader } from 'react-spinners';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import userInstance from '../../axios_instance/UserAxios';
 import ScrollDialog from '../../components/terms/Terms.jsx';
+import userInstance from '../../aaxios_instance/UserAxios.jsx';
 
 const Registration = () => {
   const navigate = useNavigate();
