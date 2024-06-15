@@ -48,30 +48,24 @@ const NavBar = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
+            {!username && (
+              <Nav.Link onDoubleClick={() => navigate('/admin')} onClick={() => navigate('/login')}>Login</Nav.Link>
+            )}
 
-            <NavDropdown onDoubleClick={() => navigate('/admin')} title={username ? <b>{username} <i className='fas fa-caret-down' /></b> : <b>Login</b>} id="NavbarScrollingDropdown" >
-              {!username && (
-                <NavDropdown.Item onClick={() => navigate('/login')}>
-                  Login
-                </NavDropdown.Item>
-              )}
-              {username && (
+            {username && (
+              <NavDropdown title={<b>{username} <i className='fas fa-caret-down' /></b>} id="NavbarScrollingDropdown" >
                 <>
                   <NavDropdown.Item onClick={() => navigate('/profile')}>My Profile</NavDropdown.Item>
                   <NavDropdown.Item onClick={() => navigate('/wishlist')}>Wishlist</NavDropdown.Item>
                   <NavDropdown.Item onClick={() => navigate('/trip')}>Trip</NavDropdown.Item>
                   <NavDropdown.Item onClick={() => navigate('/booking')}>Booking</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={handleLogout}>
-                    <i className='fas fa-sign-out-alt' /> Logout
-                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleLogout}><i className='fas fa-sign-out-alt' /> Logout</NavDropdown.Item>
                 </>
-              )}
-
-            </NavDropdown>
+              </NavDropdown>
+            )}
             <Nav.Link><i className='fas fa-headset' /></Nav.Link>
           </Nav>
-
         </Navbar.Collapse>
       </Container>
     </Navbar>

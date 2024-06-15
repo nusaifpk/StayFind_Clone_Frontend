@@ -57,7 +57,6 @@ const Property = () => {
         fetchData();
     }, [userId]);
 
-
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         const locationQuery = searchParams.get('location');
@@ -132,6 +131,17 @@ const Property = () => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    const SkeletonCard = () => (
+        <div className="card">
+            <div className="skeleton" />
+            <div className="details">
+                <div className="skeleton-details" />
+                <div className="skeleton-text" />
+                <div className="skeleton-text" />
+            </div>
+        </div>
+    );
+
     return (
         <div className='main_property_container'>
             <h2 className='main_text'>Available Now</h2>
@@ -143,16 +153,7 @@ const Property = () => {
             </datalist>
             <div className="property">
                 {loading ? (
-                    Array.from({ length: 8 }).map((_, index) => (
-                        <div key={index} className="card">
-                            <div className="skeleton" />
-                            <div className="details">
-                                <div className="skeleton-details" />
-                                <div className="skeleton-text" />
-                                <div className="skeleton-text" />
-                            </div>
-                        </div>
-                    ))
+                    Array.from({ length: itemsPerPage }).map((_, index) => <SkeletonCard key={index} />)
                 ) : currentProperties.length > 0 ? (
                     currentProperties.map((property) => (
                         <div key={property._id} className="card" onClick={() => navigate(`/properties/${property._id}?name=${property.name}&location=${property.location}`)}>
@@ -200,4 +201,3 @@ const Property = () => {
 };
 
 export default Property;
-

@@ -7,8 +7,8 @@ import { toast } from 'react-hot-toast';
 import userInstance from '../../aaxios_instance/UserAxios';
 import Rating from '@mui/material/Rating';
 import tempLogo from '../../assets/temporary-profile.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 
 const PropertyDetails = () => {
@@ -167,8 +167,8 @@ const PropertyDetails = () => {
                   handleSave(property._id);
                 }}
               >
-                <FontAwesomeIcon icon={faHeart} />
-                &nbsp;Save
+                <FavoriteIcon style={{height:"18px"}} />
+                {favorites.includes(property._id) ? "Saved" : "Save"}
               </span>
 
             </div>

@@ -426,6 +426,14 @@ body.active-model {
     border-radius: 12px;
     min-width: 50%;
 }
+.red .MuiSvgIcon-root {
+    color: red;
+}
+
+.black .MuiSvgIcon-root {
+    color: rgb(68, 65, 65);
+}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -483,3 +491,6 @@ body.active-model {
         min-width: unset;
     }
 }
+
+
+
