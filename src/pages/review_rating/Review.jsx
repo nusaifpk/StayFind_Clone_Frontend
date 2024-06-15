@@ -83,7 +83,7 @@ const Review = () => {
                     <textarea value={review} onChange={(e) => setReview(e.target.value)} />
                     <Button className='post_btn' variant="contained" color="success" onClick={handlePost}>
                         {loading ? (
-                            <PropagateLoader color="#fff" loading={loading} size={5} />
+                            <PropagateLoader color="#fff" loading={loading} size={5} style={{ alignItems: "center" }} />
                         ) : (
                             'POST'
                         )}

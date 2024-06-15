@@ -96,7 +96,7 @@ const Registration = () => {
 
             <Button type="submit" className='btn' variant='danger' disabled={isSubmitting || loading}>
               {loading ? (
-                <PropagateLoader color="#fff" loading={loading} size={5} />
+                <PropagateLoader color="#fff" loading={loading} size={5}  />
               ) : 'Sign Up'}
             </Button>
 
