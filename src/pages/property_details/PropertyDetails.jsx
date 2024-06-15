@@ -248,6 +248,7 @@ const PropertyDetails = () => {
               reviews.map((review) => {
                 const reviewDate = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(review.createdAt));
                 const userProfileImg = review.userId.profileImg || tempLogo
+                console.log(review);
                 return (
                   <div className="review_section" key={review._id}>
                     <div className='profile_head'>
