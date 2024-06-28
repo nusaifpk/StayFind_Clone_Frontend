@@ -7,7 +7,6 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import userInstance from '../../aaxios_instance/UserAxios';
 import { SyncLoader } from 'react-spinners';
-// import Swal from 'sweetalert2';
 
 const Confirm = () => {
 
@@ -72,7 +71,7 @@ const Confirm = () => {
     checkInDate,
     checkOutDate,
     numberOfGuests,
-    paymentDate,
+    paymentDate, 
     paymentTime,
     customerSupportEmail,
     customerSupportPhone) => {

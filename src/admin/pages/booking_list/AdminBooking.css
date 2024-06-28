@@ -30,3 +30,10 @@
 .booking_row:hover {
   background-color: #f2f2f2;
 }
+
+.main_booking_div{
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  justify-content: end;
+}

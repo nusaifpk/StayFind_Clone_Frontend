@@ -5,6 +5,7 @@ import adminInstance from '../../../aaxios_instance/AdminAxios';
 
 const AdminBooking = () => {
   const [bookings, setBookings] = useState([]);
+  const [bookingsCount, setBookingsCount] = useState('');
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
@@ -18,6 +19,7 @@ const AdminBooking = () => {
           checkOutDate: formatDate(booking.checkOutDate),
           paymentDate: formatDate(booking.paymentDate),
         })));
+        setBookingsCount(response.data.dataCount)
         console.log(response);
         setLoading(false);
       } catch (error) {
@@ -56,6 +58,8 @@ const AdminBooking = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
+          <div className='main_booking_div'>
+          <h6>Total Bookings <strong>{bookingsCount}</strong></h6>
           <table className='booking_table'>
             <thead>
               <tr>
@@ -86,6 +90,7 @@ const AdminBooking = () => {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     </div>
