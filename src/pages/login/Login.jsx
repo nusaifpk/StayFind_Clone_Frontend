@@ -76,6 +76,9 @@ const Login = () => {
   return (
     <div className='wrapper'>
       <h1>Login</h1>
+      <div className='demo'>
+        <p>username: test <br />password: test</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <input type='text' name='username' className='reg_input' placeholder='Username' onChange={handleChange} required />
         <input type='password' name='password' className='reg_input' placeholder='Password' onChange={handleChange} required />
