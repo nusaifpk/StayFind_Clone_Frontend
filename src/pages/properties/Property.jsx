@@ -88,7 +88,7 @@ const Property = () => {
                 navigate('/login');
                 return;
             }
-
+            
             let updatedFavorites = [...favorites];
             if (updatedFavorites.includes(id)) {
                 updatedFavorites = updatedFavorites.filter((favId) => favId !== id);

@@ -116,6 +116,13 @@ const PropertyDetails = () => {
   const totalAmount = property ? (property.price * numOfNights + numOfNights * 100 + numOfNights * 480 + numOfNights * 413).toLocaleString() : 0;
 
   const handleReserve = () => {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+      toast.error('Login required...');
+      navigate('/login');
+      return;
+    }
+
     if (!checkIn || !checkOut) {
       toast.error("Required dates to proceed...!");
     } else if (new Date(checkOut) <= new Date(checkIn)) {

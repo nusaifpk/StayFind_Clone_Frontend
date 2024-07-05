@@ -100,6 +100,13 @@ const Confirm = () => {
     }
   };
   const handlePayment = async () => {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+      toast.error('Login required to proceed with the payment.');
+      navigate('/login');
+      return;
+    }
+
     setLoading(true)
     setTimeout(async () => {
       try {
