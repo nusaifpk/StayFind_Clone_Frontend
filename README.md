@@ -22,7 +22,7 @@ NOTE: Please read the RUN section before opening an issue.
 <h3>Demo</h3>
 <hr/>
 
-The application is deployed and can be accessed through the following link:<a href="https://stay-find-clone-frontend.vercel.app/"><img src="assets/work-1.png" /> STAYFIND</a>
+The application is deployed and can be accessed through the following link:<a href="https://stay-find-clone-frontend.vercel.app/"><img src="./src/assets/work-1.png" /> STAYFIND</a>
 
 The website allows users to search for hotels, view details, and make bookings. For testing the checkout process, use the provided dummy card numbers or payment methods. Please DO NOT use real card numbers or data.
 
