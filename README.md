@@ -19,14 +19,14 @@ StayFind is a hotel booking app where users can search for and book hotels. This
 
 NOTE: Please read the RUN section before opening an issue.
 
-<h4>Demo</h4>
+<h3>Demo</h3>
 <hr/>
 
 The application is deployed and can be accessed through the following link:<a href="https://stay-find-clone-frontend.vercel.app/"><img src="C:\Users\nusai\OneDrive\Pictures\Screenshots\work-1.png" /> STAYFIND</a>
 
 The website allows users to search for hotels, view details, and make bookings. For testing the checkout process, use the provided dummy card numbers or payment methods. Please DO NOT use real card numbers or data.
 
-<h4>Technology</h4>
+<h3>Technology</h3>
 The application is built with:
 
 <ul>
