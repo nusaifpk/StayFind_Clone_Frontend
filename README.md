@@ -1,14 +1,16 @@
 # StayFind - Hotel Booking App
 <h2>Table of Contents</h2>
 <h3>Introduction</h3>
-<a href="">Demo</a>
-<a href="">Run</a>
-<a href="">Technology</a>
-<a href="">Features</a>
-<a href="">License</a>
-<a href="">Getting Started with Create React App</a>
-<a href="">Available Scripts</a>
-<a href="">Learn More</a>
+<ul>
+  <li><a href="">Demo</a></li>
+  <li><a href="">Run</a></li>
+  <li><a href="">Technology</a></li>
+  <li><a href="">Features</a></li>
+  <li><a href="">License</a></li>
+  <li><a href="">Getting Started with Create React App</a></li>
+  <li><a href="">Available Scripts</a></li>
+  <li><a href="">Learn More</a></li>
+</ul>
 
 
 <h3>Introduction</h3>
