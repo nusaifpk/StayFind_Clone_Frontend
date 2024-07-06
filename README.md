@@ -1,4 +1,4 @@
-StayFind - Hotel Booking App
+# StayFind - Hotel Booking App
 Table of Contents
 Introduction
 Demo
