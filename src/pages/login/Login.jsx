@@ -33,15 +33,6 @@ const Login = () => {
     localStorage.setItem('name', name);
     localStorage.setItem('phone', phone);
 
-    setTimeout(() => {
-      localStorage.removeItem('userToken');
-      localStorage.removeItem('username');
-      localStorage.removeItem('userId');
-      localStorage.removeItem('email');
-      localStorage.removeItem('name');
-      localStorage.removeItem('phone');
-      toast.warning("Session expired. Please log in again.");
-    }, 86400000);
   };
 
 

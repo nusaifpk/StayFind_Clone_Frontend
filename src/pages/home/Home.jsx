@@ -5,58 +5,67 @@ import ContactUs from '../../components/contact_us/Contact';
 import cities from '../../assets/all_cities';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import userInstance from '../../aaxios_instance/UserAxios';
 
 const Home = () => {
-
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
+  const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState('all');
   const [suggestions, setSuggestions] = useState([]);
   const [placeholder, setPlaceholder] = useState(0);
   const placeholderText = ['Search "Idukki"', 'Search "Munnar"', 'Search "Pool"', 'Search "Ponnani"'];
 
   const handleChange = (e) => {
-    const { value } = e.target;
-    setInputValue(value);
+    setInputValue(e.target.value);
   };
+
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
 
   const locationUrl = process.env.REACT_APP_LOCATION_FETCH_URL;
 
-  //Get Location
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await userInstance.get('/api/users/categories');
+        setCategories(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   const handleGLocByGPS = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           fetch(`${locationUrl}/reverse?lat=${latitude}&lon=${longitude}&format=json`)
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
+            .then((response) => response.json())
+            .then((data) => {
               const placeName = data.address.county;
               setInputValue(placeName);
             })
-            .catch(error => console.error("Error fetching location: ", error));
+            .catch((error) => console.error('Error fetching location: ', error));
         },
         (error) => {
-          console.error("Error getting location: ", error);
+          console.error('Error getting location: ', error);
         }
       );
     } else {
-      console.log("Geolocation is not supported by this browser");
+      console.log('Geolocation is not supported by this browser');
     }
   };
 
-  //Get Location By Mic
   const handleGLocByMic = () => {
-    toast("Mic is now on...", {
-      autoClose: 5000
+    toast('Mic is now on...', {
+      autoClose: 5000,
     });
 
     const recognition = new window.webkitSpeechRecognition();
-
     recognition.onresult = (e) => {
       const transcript = e.results[0][0].transcript;
       setInputValue(transcript);
@@ -113,14 +122,12 @@ const Home = () => {
           <p>We’ll do the searching. You do the saving.</p>
           <div className="search_container">
             <select name="Property" onChange={handleCategoryChange}>
-              <option value="all">Category All</option>
-              <option value="cabin">Cabin</option>
-              <option value="resort">Resort</option>
-              <option value="farm">Farm</option>
-              <option value="lake">Lake</option>
-              <option value="villa">Villa</option>
-              <option value="pool">Pool</option>
-              <option value="room">Room</option>
+              <option value="all">ALL</option>
+              {categories.map((category) => (
+                <option value={category.name.toLowerCase()} key={category._id}>
+                  {category.name.toUpperCase()}
+                </option>
+              ))}
             </select>
             <i className="fas fa-search" style={{ paddingLeft: '20px', paddingRight: '0px' }} />
             <input
@@ -139,18 +146,18 @@ const Home = () => {
             </datalist>
             <i className="fas fa-map-marker-alt i_icons" onClick={handleGLocByGPS} />
             <i className="fas fa-microphone i_icons" onClick={handleGLocByMic} />
-            <button className="search_button" onClick={handleSearch}>Search</button>
+            <button className="search_button" onClick={handleSearch}>
+              Search
+            </button>
           </div>
         </div>
       </section>
 
       <section className="features_section">
-        <div>
-          <Features />
-        </div>
+        <Features />
       </section>
 
-      <section>
+      <section className="contact_section">
         <ContactUs />
       </section>
     </>

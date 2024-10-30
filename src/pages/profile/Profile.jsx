@@ -12,7 +12,8 @@ const Profile = () => {
     
     useEffect(() => {
         if (!localStorage.getItem('userToken')) {
-            navigate('/');
+            toast.error("login required...!")
+            navigate('/login');
         }
     }, [navigate]);
     
