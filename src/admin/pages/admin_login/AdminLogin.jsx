@@ -33,12 +33,6 @@ const AdminLogin = () => {
       localStorage.setItem('adminToken', token);
       toast.success("Admin login success...");
       navigate('/admin');
-
-      setTimeout(() => {
-        localStorage.removeItem('adminToken');
-        toast.warning("Session expired. Please log in again.");
-      }, 3600000);
-
     }
     catch (error) {
       console.error('Login error:', error);

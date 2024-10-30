@@ -49,8 +49,8 @@
   flex: 1;
 }
 
-.location_input:active {
-  border: none;
+.location_input:focus {
+  outline: none;
 }
 
 .location_input::placeholder {

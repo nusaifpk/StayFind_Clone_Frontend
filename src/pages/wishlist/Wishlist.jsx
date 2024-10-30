@@ -11,7 +11,7 @@ const Wishlist = () => {
 
   useEffect(() => {
     if (!localStorage.getItem('userToken')) {
-      navigate('/');
+      navigate('/login');
     }
   }, [navigate]);
 

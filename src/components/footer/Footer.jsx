@@ -73,7 +73,7 @@ const Footer = () => {
               </p>
               <p>
                 <MDBIcon color='secondary' icon='envelope' className='me-3' />
-                contactstayfind@gmail.com
+                work.nusaifpk@gmail.com
               </p>
               <p>
                 <MDBIcon color='secondary' icon='phone' className='me-3' /> +91 9497630421
